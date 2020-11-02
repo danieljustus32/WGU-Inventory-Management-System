@@ -28,126 +28,167 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.IMSLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.addButton1 = new System.Windows.Forms.Button();
+            this.modifyButton1 = new System.Windows.Forms.Button();
+            this.deleteButton1 = new System.Windows.Forms.Button();
+            this.addButton2 = new System.Windows.Forms.Button();
+            this.modifyButton2 = new System.Windows.Forms.Button();
+            this.deleteButton2 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // IMSLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Inventory Management System";
+            this.IMSLabel.AutoSize = true;
+            this.IMSLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IMSLabel.Location = new System.Drawing.Point(12, 9);
+            this.IMSLabel.Name = "IMSLabel";
+            this.IMSLabel.Size = new System.Drawing.Size(227, 21);
+            this.IMSLabel.TabIndex = 0;
+            this.IMSLabel.Text = "Inventory Management System";
             // 
-            // button1
+            // searchButton
             // 
-            this.button1.Location = new System.Drawing.Point(427, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchButton.Location = new System.Drawing.Point(644, 53);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(529, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 23);
-            this.textBox1.TabIndex = 2;
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.Location = new System.Drawing.Point(725, 53);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(262, 23);
+            this.searchBox.TabIndex = 2;
             // 
-            // button2
+            // addButton1
             // 
-            this.button2.Location = new System.Drawing.Point(200, 343);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton1.Location = new System.Drawing.Point(326, 503);
+            this.addButton1.Name = "addButton1";
+            this.addButton1.Size = new System.Drawing.Size(54, 29);
+            this.addButton1.TabIndex = 3;
+            this.addButton1.Text = "Add";
+            this.addButton1.UseVisualStyleBackColor = true;
+            this.addButton1.Click += new System.EventHandler(this.addButton1_Click);
             // 
-            // button3
+            // modifyButton1
             // 
-            this.button3.Location = new System.Drawing.Point(260, 343);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(58, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Modify";
-            this.button3.UseVisualStyleBackColor = true;
+            this.modifyButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modifyButton1.Location = new System.Drawing.Point(386, 503);
+            this.modifyButton1.Name = "modifyButton1";
+            this.modifyButton1.Size = new System.Drawing.Size(58, 29);
+            this.modifyButton1.TabIndex = 4;
+            this.modifyButton1.Text = "Modify";
+            this.modifyButton1.UseVisualStyleBackColor = true;
+            this.modifyButton1.Click += new System.EventHandler(this.modifyButton1_Click);
             // 
-            // button4
+            // deleteButton1
             // 
-            this.button4.Location = new System.Drawing.Point(324, 343);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(55, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.deleteButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton1.Location = new System.Drawing.Point(450, 503);
+            this.deleteButton1.Name = "deleteButton1";
+            this.deleteButton1.Size = new System.Drawing.Size(55, 29);
+            this.deleteButton1.TabIndex = 5;
+            this.deleteButton1.Text = "Delete";
+            this.deleteButton1.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // addButton2
             // 
-            this.button5.Location = new System.Drawing.Point(560, 343);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(54, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Add";
-            this.button5.UseVisualStyleBackColor = true;
+            this.addButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton2.Location = new System.Drawing.Point(804, 503);
+            this.addButton2.Name = "addButton2";
+            this.addButton2.Size = new System.Drawing.Size(54, 29);
+            this.addButton2.TabIndex = 3;
+            this.addButton2.Text = "Add";
+            this.addButton2.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // modifyButton2
             // 
-            this.button6.Location = new System.Drawing.Point(620, 343);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(58, 23);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Modify";
-            this.button6.UseVisualStyleBackColor = true;
+            this.modifyButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modifyButton2.Location = new System.Drawing.Point(864, 503);
+            this.modifyButton2.Name = "modifyButton2";
+            this.modifyButton2.Size = new System.Drawing.Size(58, 29);
+            this.modifyButton2.TabIndex = 4;
+            this.modifyButton2.Text = "Modify";
+            this.modifyButton2.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // deleteButton2
             // 
-            this.button7.Location = new System.Drawing.Point(684, 343);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(55, 23);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Delete";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button4_Click);
+            this.deleteButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton2.Location = new System.Drawing.Point(928, 503);
+            this.deleteButton2.Name = "deleteButton2";
+            this.deleteButton2.Size = new System.Drawing.Size(55, 29);
+            this.deleteButton2.TabIndex = 5;
+            this.deleteButton2.Text = "Delete";
+            this.deleteButton2.UseVisualStyleBackColor = true;
+            this.deleteButton2.Click += new System.EventHandler(this.deleteButton2_Click);
             // 
-            // button8
+            // exitButton
             // 
-            this.button8.Location = new System.Drawing.Point(664, 404);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "Exit";
-            this.button8.UseVisualStyleBackColor = true;
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Location = new System.Drawing.Point(904, 556);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 32);
+            this.exitButton.TabIndex = 6;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pictureBox1.Location = new System.Drawing.Point(29, 113);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(476, 347);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pictureBox2.Location = new System.Drawing.Point(519, 113);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(468, 347);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
+            this.AcceptButton = this.searchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1038, 622);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.deleteButton2);
+            this.Controls.Add(this.modifyButton2);
+            this.Controls.Add(this.addButton2);
+            this.Controls.Add(this.deleteButton1);
+            this.Controls.Add(this.modifyButton1);
+            this.Controls.Add(this.addButton1);
+            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.IMSLabel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "IMS";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,16 +196,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label IMSLabel;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Button addButton1;
+        private System.Windows.Forms.Button modifyButton1;
+        private System.Windows.Forms.Button deleteButton1;
+        private System.Windows.Forms.Button addButton2;
+        private System.Windows.Forms.Button modifyButton2;
+        private System.Windows.Forms.Button deleteButton2;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

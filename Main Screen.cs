@@ -17,7 +17,22 @@ namespace C968_PA_Task
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modifyButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteButton2_Click(object sender, EventArgs e)
         {
 
         }
