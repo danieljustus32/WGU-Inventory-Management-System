@@ -20,14 +20,31 @@ namespace C968_PA_Task
             associatedParts.Add(partToAdd);
         }
 
-        private static bool removeAssociatedPart(int PartID)
+        private bool removeAssociatedPart(int PartID)
         {
-            return true;
+            var deleted = false;
+            foreach (var part in associatedParts)
+            {
+                if (part.PartID == PartID)
+                {
+                    associatedParts.Remove(part);
+                    deleted = true;
+                }
+            }
+            return deleted;
         }
 
-        // private static Part lookupAssociatedPart(int PartID)
-        // {
-           
-        // }
+        private Part lookupAssociatedPart(int PartID)
+        {
+            Part foundPart = new Inhouse();
+            foreach (var part in associatedParts)
+            {
+                if (part.PartID == PartID)
+                {
+                    foundPart = part;
+                }
+            }
+            return foundPart;
+        }
     }
 }

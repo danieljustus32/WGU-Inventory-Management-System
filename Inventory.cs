@@ -22,25 +22,30 @@ namespace C968_PA_Task
 
         private bool removeProduct(int ProductID)
         {
-            bool found = false;
+            var deleted = false;
             foreach(var product in products)
             {
                 if (product.ProductID == ProductID)
                 {
                     products.Remove(product);
-                    found = true;
-                } else
-                {
-                    found = false;
+                    deleted = true;
                 }
             }
-            return found;
+            return deleted;
         }
 
-        //private static Product lookupProduct(int ProductID)
-        //{
-
-        //}
+        private Product lookupProduct(int ProductID)
+        {
+            Product foundProduct = new Product();
+            foreach (var product in products)
+            {
+                if (product.ProductID == ProductID)
+                {
+                    foundProduct = product;
+                }
+            }
+            return foundProduct;
+        }
 
         private void updateProduct(int ProductID, Product productToModify)
         {
@@ -54,30 +59,34 @@ namespace C968_PA_Task
 
         private bool deletePart(Part partToDelete)
         {
-            bool found = false;
+            bool deleted = false;
             foreach (var part in allParts)
             {
                 if (part.PartID == partToDelete.PartID)
                 {
                     allParts.Remove(part);
-                    found = true;
-                }
-                else
-                {
-                    found = false;
+                    deleted = true;
                 }
             }
-            return found;
+            return deleted;
         }
 
-        //private static Part lookupPart(int PartID)
-        //{
-
-        //}
-
-        private static void updatePart(int PartID, Part partToUpdate)
+        private Part lookupPart(int PartID)
         {
+            Part foundPart = new Inhouse();
+            foreach (var part in allParts)
+            {
+                if (part.PartID == PartID)
+                {
+                    foundPart = part;
+                }
+            }
+            return foundPart;
+        }
 
+        private void updatePart(int PartID, Part partToUpdate)
+        {
+           
         }
     }
 }
