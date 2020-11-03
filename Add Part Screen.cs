@@ -29,7 +29,7 @@ namespace C968_PA_Task
             textBoxMin.Validating += textBoxMin_Validating;
             textBoxMax.Validating += textBoxMax_Validating;
 
-
+           
         }
 
         // Instantiated when clicking 'Modify' after selecting an in-house part
@@ -248,7 +248,9 @@ namespace C968_PA_Task
                                                 int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text), 
                                                 int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
                 Inventory.addPart(partToAdd);
-                MessageBox.Show($"Added part: {partToAdd.Name}");
+                MessageBox.Show($"Added part: {Inventory.allParts[Inventory.allParts.Count - 1].Name}");
+                this.Hide();
+                Program.mainScreen.Show();
             }
         }
     }
