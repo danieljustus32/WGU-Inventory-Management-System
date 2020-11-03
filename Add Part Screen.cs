@@ -14,11 +14,21 @@ namespace C968_PA_Task
         public Form2()
         {
             InitializeComponent();
+
+            // Initialize random number generator to create a part ID from 0-999999
+            Random generator = new Random();
+            int possiblePartID = generator.Next(0, 1000000);
+            while (CheckPartID(possiblePartID))
+            {
+                possiblePartID = generator.Next(0, 1000000);
+            }
+            textBoxID.Text = possiblePartID.ToString();
             textBoxName.Validating += textBoxName_Validating;
             textBoxInventory.Validating += textBoxInventory_Validating;
             textBoxPrice.Validating += textBoxPrice_Validating;
             textBoxMin.Validating += textBoxMin_Validating;
             textBoxMax.Validating += textBoxMax_Validating;
+
 
         }
 
@@ -62,6 +72,26 @@ namespace C968_PA_Task
             textBoxMin.Validating += textBoxMin_Validating;
             textBoxMax.Text = partToModify.Max.ToString();
             textBoxMax.Validating += textBoxMax_Validating;
+        }
+
+        private bool CheckPartID(int partID)
+        {
+            bool found = false;
+            if (Inventory.allParts == null)
+            {
+                return found;
+            }
+            else
+            {
+                foreach (var part in Inventory.allParts)
+                {
+                    if (part.PartID == partID)
+                    {
+                        found = true;
+                    }
+                }
+                return found;
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -133,7 +163,7 @@ namespace C968_PA_Task
         {
             if (textBoxPrice.Text != "")
             {
-                if (!Regex.Match(textBoxPrice.Text, "^[0-9][0-9]*$").Success)
+                if (!Regex.Match(textBoxPrice.Text, "^[0-9]+.[0-9]{2}$").Success)
                 {
                     textBoxPrice.BackColor = Color.Tomato;
                     saveButton.Enabled = false;
@@ -207,6 +237,18 @@ namespace C968_PA_Task
                 saveButton.Enabled = true;
                 // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxMax, String.Empty);
+            }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        { 
+            if (radioButtonInhouse.Checked == true)
+            {
+                Inhouse partToAdd = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                                                int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text), 
+                                                int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
+                Inventory.addPart(partToAdd);
+                MessageBox.Show($"Added part: {partToAdd.Name}");
             }
         }
     }

@@ -7,10 +7,10 @@ namespace C968_PA_Task
 {
     class Inventory
     {
-        public BindingList<Product> products;
-        public BindingList<Part> allParts;
+        public static BindingList<Product> products = new BindingList<Product>();
+        public static BindingList<Part> allParts = new BindingList<Part>();
 
-        Inventory()
+        public Inventory()
         {
 
         }
@@ -52,7 +52,7 @@ namespace C968_PA_Task
 
         }
 
-        private void addPart(Part partToAdd)
+        public static void addPart(Part partToAdd)
         {
             allParts.Add(partToAdd);
         }
@@ -71,18 +71,18 @@ namespace C968_PA_Task
             return deleted;
         }
 
-        private Part lookupPart(int PartID)
-        {
-            Part foundPart = new Inhouse();
-            foreach (var part in allParts)
-            {
-                if (part.PartID == PartID)
-                {
-                    foundPart = part;
-                }
-            }
-            return foundPart;
-        }
+        //private Part lookupPart(int PartID)
+        //{
+        //    Part foundPart = new Inhouse();
+        //    foreach (var part in allParts)
+        //    {
+        //        if (part.PartID == PartID)
+        //        {
+        //            foundPart = part;
+        //        }
+        //    }
+        //    return foundPart;
+        //}
 
         private void updatePart(int PartID, Part partToUpdate)
         {

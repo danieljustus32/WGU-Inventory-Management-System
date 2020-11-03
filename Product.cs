@@ -34,17 +34,17 @@ namespace C968_PA_Task
             return deleted;
         }
 
-        private Part lookupAssociatedPart(int PartID)
-        {
-            Part foundPart = new Inhouse();
-            foreach (var part in associatedParts)
-            {
-                if (part.PartID == PartID)
-                {
-                    foundPart = part;
-                }
-            }
-            return foundPart;
-        }
+        //private Part lookupAssociatedPart(int PartID)
+        //{
+        //    Part foundPart = new Inhouse();
+        //    foreach (var part in associatedParts)
+        //    {
+        //        if (part.PartID == PartID)
+        //        {
+        //            foundPart = part;
+        //        }
+        //    }
+        //    return foundPart;
+        //}
     }
 }
