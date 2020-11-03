@@ -105,6 +105,13 @@ namespace C968_PA_Task
                     errorProvider1.SetError(this.textBoxInventory, String.Empty);
                 }
             }
+            else
+            {
+                textBoxMax.BackColor = Color.White;
+                saveButton.Enabled = true;
+                // Clear the error, if any, in the error provider.
+                errorProvider1.SetError(this.textBoxMax, String.Empty);
+            }
         }
 
         private void textBoxPrice_Validating(object sender, CancelEventArgs e)
@@ -126,29 +133,49 @@ namespace C968_PA_Task
 
         private void textBoxMin_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxMin.Text, "^[0-9][0-9]*$").Success && textBoxMin.Text != "")
+            if (textBoxMin.Text != "")
             {
-                textBoxMin.BackColor = Color.Tomato;
-                saveButton.Enabled = false;
-                errorProvider1.SetError(this.textBoxMin, "Minimum quantity on hand must be a number and must be greater than or equal to 0");
+                if (!Regex.Match(textBoxMin.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxMin.Text) < 0 || int.Parse(textBoxMin.Text) > 999)
+                {
+                    textBoxMin.BackColor = Color.Tomato;
+                    saveButton.Enabled = false;
+                    errorProvider1.SetError(this.textBoxMin, "Minimum quantity on hand must be a positive number and must be less than 1000");
+                }
+                else
+                {
+                    textBoxMin.BackColor = Color.White;
+                    saveButton.Enabled = true;
+                    // Clear the error, if any, in the error provider.
+                    errorProvider1.SetError(this.textBoxMin, String.Empty);
+                }
             }
             else
             {
-                textBoxMin.BackColor = Color.White;
+                textBoxMax.BackColor = Color.White;
                 saveButton.Enabled = true;
                 // Clear the error, if any, in the error provider.
-                errorProvider1.SetError(this.textBoxMin, String.Empty);
+                errorProvider1.SetError(this.textBoxMax, String.Empty);
             }
         }
 
         private void textBoxMax_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxMax.Text, "^[0-9][0-9]*$").Success && textBoxMax.Text != "")
+            if (textBoxMax.Text != "")
             {
-                textBoxMax.BackColor = Color.Tomato;
-                saveButton.Enabled = false;
-                errorProvider1.SetError(this.textBoxMax, "Maximum quantity on hand must be a number and must be less than 1000");
-            }
+                if (!Regex.Match(textBoxMax.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxMax.Text) < 0 || int.Parse(textBoxMax.Text) > 999)
+                {
+                    textBoxMax.BackColor = Color.Tomato;
+                    saveButton.Enabled = false;
+                    errorProvider1.SetError(this.textBoxMax, "Maximum quantity on hand must be a positive number and must be less than 1000");
+                }
+                else
+                {
+                    textBoxMax.BackColor = Color.White;
+                    saveButton.Enabled = true;
+                    // Clear the error, if any, in the error provider.
+                    errorProvider1.SetError(this.textBoxMax, String.Empty);
+                }
+            } 
             else
             {
                 textBoxMax.BackColor = Color.White;
