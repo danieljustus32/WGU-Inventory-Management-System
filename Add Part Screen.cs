@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace C968_PA_Task
@@ -25,13 +26,17 @@ namespace C968_PA_Task
 
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxName.Text == "Invalid")
+            if (!Regex.Match(textBoxName.Text, "^[A-Z][a-zA-Z]*$").Success)
             {
                 textBoxName.BackColor = Color.Tomato;
-            }
-            if (textBoxName.Text == "Valid")
+                saveButton.Enabled = false;
+                errorProvider1.SetError(this.textBoxName, "Name must not include numbers or whitespace, and must begin with a capital letter");
+            } else
             {
                 textBoxName.BackColor = Color.White;
+                saveButton.Enabled = true;
+                // Clear the error, if any, in the error provider.
+                errorProvider1.SetError(this.textBoxName, String.Empty);
             }
         }
 
