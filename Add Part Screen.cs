@@ -73,7 +73,7 @@ namespace C968_PA_Task
 
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxName.Text, "^[A-Z][a-zA-Z]*$").Success)
+            if (!Regex.Match(textBoxName.Text, "^[A-Z][a-zA-Z]*$").Success && textBoxName.Text != "")
             {
                 textBoxName.BackColor = Color.Tomato;
                 saveButton.Enabled = false;
@@ -89,24 +89,27 @@ namespace C968_PA_Task
         
         private void textBoxInventory_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxInventory.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxInventory.Text) < 0 || int.Parse(textBoxInventory.Text) > 99)
+            if (textBoxInventory.Text != "")
             {
-                textBoxInventory.BackColor = Color.Tomato;
-                saveButton.Enabled = false;
-                errorProvider1.SetError(this.textBoxInventory, "Inventory must be a positive number between 0 and 99");
-            }
-            else
-            {
-                textBoxInventory.BackColor = Color.White;
-                saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
-                errorProvider1.SetError(this.textBoxInventory, String.Empty);
+                if (!Regex.Match(textBoxInventory.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxInventory.Text) < 0 || int.Parse(textBoxInventory.Text) > 99)
+                {
+                    textBoxInventory.BackColor = Color.Tomato;
+                    saveButton.Enabled = false;
+                    errorProvider1.SetError(this.textBoxInventory, "Inventory must be a positive number between 0 and 99");
+                }
+                else
+                {
+                    textBoxInventory.BackColor = Color.White;
+                    saveButton.Enabled = true;
+                    // Clear the error, if any, in the error provider.
+                    errorProvider1.SetError(this.textBoxInventory, String.Empty);
+                }
             }
         }
 
         private void textBoxPrice_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxPrice.Text, "^[0-9][0-9]*$").Success)
+            if (!Regex.Match(textBoxPrice.Text, "^[0-9][0-9]*$").Success && textBoxPrice.Text != "")
             {
                 textBoxPrice.BackColor = Color.Tomato;
                 saveButton.Enabled = false;
@@ -123,7 +126,7 @@ namespace C968_PA_Task
 
         private void textBoxMin_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxMin.Text, "^[0-9][0-9]*$").Success)
+            if (!Regex.Match(textBoxMin.Text, "^[0-9][0-9]*$").Success && textBoxMin.Text != "")
             {
                 textBoxMin.BackColor = Color.Tomato;
                 saveButton.Enabled = false;
@@ -140,7 +143,7 @@ namespace C968_PA_Task
 
         private void textBoxMax_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxMax.Text, "^[0-9][0-9]*$").Success)
+            if (!Regex.Match(textBoxMax.Text, "^[0-9][0-9]*$").Success && textBoxMax.Text != "")
             {
                 textBoxMax.BackColor = Color.Tomato;
                 saveButton.Enabled = false;
