@@ -43,7 +43,6 @@
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelMin = new System.Windows.Forms.Label();
             this.labelMax = new System.Windows.Forms.Label();
-            this.labelAddPart = new System.Windows.Forms.Label();
             this.textBoxMachineID = new System.Windows.Forms.TextBox();
             this.labelMachineID = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
@@ -171,16 +170,6 @@
             this.labelMax.TabIndex = 8;
             this.labelMax.Text = "Max";
             // 
-            // labelAddPart
-            // 
-            this.labelAddPart.AutoSize = true;
-            this.labelAddPart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAddPart.Location = new System.Drawing.Point(12, 12);
-            this.labelAddPart.Name = "labelAddPart";
-            this.labelAddPart.Size = new System.Drawing.Size(69, 21);
-            this.labelAddPart.TabIndex = 9;
-            this.labelAddPart.Text = "Add Part";
-            // 
             // textBoxMachineID
             // 
             this.textBoxMachineID.Location = new System.Drawing.Point(275, 345);
@@ -218,6 +207,7 @@
             // 
             // errorProvider1
             // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
             // Form2
@@ -230,7 +220,6 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.labelMachineID);
             this.Controls.Add(this.textBoxMachineID);
-            this.Controls.Add(this.labelAddPart);
             this.Controls.Add(this.labelMax);
             this.Controls.Add(this.labelMin);
             this.Controls.Add(this.labelPrice);
@@ -269,7 +258,6 @@
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Label labelMin;
         private System.Windows.Forms.Label labelMax;
-        private System.Windows.Forms.Label labelAddPart;
         private System.Windows.Forms.TextBox textBoxMachineID;
         private System.Windows.Forms.Label labelMachineID;
         private System.Windows.Forms.Button saveButton;
