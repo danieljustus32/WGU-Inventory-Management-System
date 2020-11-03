@@ -73,12 +73,27 @@ namespace C968_PA_Task
 
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxName.Text, "^[A-Z][a-zA-Z]*$").Success && textBoxName.Text != "")
+            if (textBoxName.Text != "")
             {
-                textBoxName.BackColor = Color.Tomato;
-                saveButton.Enabled = false;
-                errorProvider1.SetError(this.textBoxName, "Name must not include numbers or whitespace, and must begin with a capital letter");
-            } else
+                // Here we clear the error from the error provider if the check returns true, and leave the error if the user enters 
+                // anything *other than* what matches this regex (No digits, words are capitalized with one space between
+                if (Regex.Match(textBoxName.Text, "^[A-Z][a-z]*\\s[A-Z][a-z]*\\s[A-Z][a-z]*").Success || 
+                    Regex.Match(textBoxName.Text, "^[A-Z][a-z]*\\s[A-Z][a-z]*").Success || 
+                    Regex.Match(textBoxName.Text, "^[A-Z][a-z]*").Success)
+                {
+                    textBoxName.BackColor = Color.White;
+                    saveButton.Enabled = true;
+                    // Clear the error, if any, in the error provider.
+                    errorProvider1.SetError(this.textBoxName, String.Empty);
+                }
+                else
+                {
+                    textBoxName.BackColor = Color.Tomato;
+                    saveButton.Enabled = false;
+                    errorProvider1.SetError(this.textBoxName, "Part's name must only include the 26 letters of the alphabet, and each word needs to be capitalized");
+                }
+            }
+            else
             {
                 textBoxName.BackColor = Color.White;
                 saveButton.Enabled = true;
@@ -91,7 +106,7 @@ namespace C968_PA_Task
         {
             if (textBoxInventory.Text != "")
             {
-                if (!Regex.Match(textBoxInventory.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxInventory.Text) < 0 || int.Parse(textBoxInventory.Text) > 99)
+                if (!Regex.Match(textBoxInventory.Text, "^[0-9][0-9]*$").Success || int.Parse(textBoxInventory.Text) < 0 || int.Parse(textBoxInventory.Text) > 999)
                 {
                     textBoxInventory.BackColor = Color.Tomato;
                     saveButton.Enabled = false;
@@ -107,20 +122,30 @@ namespace C968_PA_Task
             }
             else
             {
-                textBoxMax.BackColor = Color.White;
+                textBoxInventory.BackColor = Color.White;
                 saveButton.Enabled = true;
                 // Clear the error, if any, in the error provider.
-                errorProvider1.SetError(this.textBoxMax, String.Empty);
+                errorProvider1.SetError(this.textBoxInventory, String.Empty);
             }
         }
 
         private void textBoxPrice_Validating(object sender, CancelEventArgs e)
         {
-            if (!Regex.Match(textBoxPrice.Text, "^[0-9][0-9]*$").Success && textBoxPrice.Text != "")
+            if (textBoxPrice.Text != "")
             {
-                textBoxPrice.BackColor = Color.Tomato;
-                saveButton.Enabled = false;
-                errorProvider1.SetError(this.textBoxPrice, "Price must be a decimal in xx.xx or x.xx format, no need to enter a dollar sign");
+                if (!Regex.Match(textBoxPrice.Text, "^[0-9][0-9]*$").Success)
+                {
+                    textBoxPrice.BackColor = Color.Tomato;
+                    saveButton.Enabled = false;
+                    errorProvider1.SetError(this.textBoxPrice, "Price must be a decimal in xx.xx or x.xx format, no need to enter a dollar sign");
+                }
+                else
+                {
+                    textBoxPrice.BackColor = Color.White;
+                    saveButton.Enabled = true;
+                    // Clear the error, if any, in the error provider.
+                    errorProvider1.SetError(this.textBoxPrice, String.Empty);
+                }
             }
             else
             {
@@ -151,10 +176,10 @@ namespace C968_PA_Task
             }
             else
             {
-                textBoxMax.BackColor = Color.White;
+                textBoxMin.BackColor = Color.White;
                 saveButton.Enabled = true;
                 // Clear the error, if any, in the error provider.
-                errorProvider1.SetError(this.textBoxMax, String.Empty);
+                errorProvider1.SetError(this.textBoxMin, String.Empty);
             }
         }
 
