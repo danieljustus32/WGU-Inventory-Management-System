@@ -72,6 +72,7 @@
             this.radioButtonOutsourced.TabStop = true;
             this.radioButtonOutsourced.Text = "Outsourced";
             this.radioButtonOutsourced.UseVisualStyleBackColor = true;
+            this.radioButtonOutsourced.CheckedChanged += new System.EventHandler(this.radioButtonOutsourced_CheckedChanged);
             // 
             // textBoxID
             // 

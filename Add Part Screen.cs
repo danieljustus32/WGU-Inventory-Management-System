@@ -253,5 +253,13 @@ namespace C968_PA_Task
                 Program.mainScreen.Show();
             }
         }
+
+        private void radioButtonOutsourced_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOutsourced.Checked == true)
+            {
+                labelMachineID.Text = "Company Name";
+            }
+        }
     }
 }
