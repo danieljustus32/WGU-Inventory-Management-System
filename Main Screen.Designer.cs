@@ -116,6 +116,7 @@
             this.addButton2.TabIndex = 3;
             this.addButton2.Text = "Add";
             this.addButton2.UseVisualStyleBackColor = true;
+            this.addButton2.Click += new System.EventHandler(this.addButton2_Click);
             // 
             // modifyButton2
             // 

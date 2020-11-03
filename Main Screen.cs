@@ -34,5 +34,12 @@ namespace C968_PA_Task
         {
             Application.Exit();
         }
+
+        private void addButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 addPartScreen = new Form2();
+            addPartScreen.Show();
+        }
     }
 }
