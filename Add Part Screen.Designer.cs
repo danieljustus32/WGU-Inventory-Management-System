@@ -61,6 +61,7 @@
             this.radioButtonInhouse.TabStop = true;
             this.radioButtonInhouse.Text = "In-House";
             this.radioButtonInhouse.UseVisualStyleBackColor = true;
+            this.radioButtonInhouse.CheckedChanged += new System.EventHandler(this.radioButtonInhouse_CheckedChanged);
             // 
             // radioButtonOutsourced
             // 

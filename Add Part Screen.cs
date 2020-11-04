@@ -261,5 +261,13 @@ namespace C968_PA_Task
                 labelMachineID.Text = "Company Name";
             }
         }
+
+        private void radioButtonInhouse_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonInhouse.Checked == true)
+            {
+                labelMachineID.Text = "Machine ID";
+            }
+        }
     }
 }
