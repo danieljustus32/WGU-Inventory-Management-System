@@ -34,7 +34,7 @@ namespace C968_PA_Task
             return deleted;
         }
 
-        private Product lookupProduct(int ProductID)
+        public Product lookupProduct(int ProductID)
         {
             Product foundProduct = new Product();
             foreach (var product in products)
@@ -57,7 +57,7 @@ namespace C968_PA_Task
             allParts.Add(partToAdd);
         }
 
-        private bool deletePart(Part partToDelete)
+        public bool deletePart(Part partToDelete)
         {
             bool deleted = false;
             foreach (var part in allParts)
@@ -71,22 +71,28 @@ namespace C968_PA_Task
             return deleted;
         }
 
-        //private Part lookupPart(int PartID)
-        //{
-        //    Part foundPart = new Inhouse();
-        //    foreach (var part in allParts)
-        //    {
-        //        if (part.PartID == PartID)
-        //        {
-        //            foundPart = part;
-        //        }
-        //    }
-        //    return foundPart;
-        //}
-
-        private void updatePart(int PartID, Part partToUpdate)
+        public Part lookupPart(int PartID)
         {
-           
+            Part foundPart = null;
+            foreach (var part in allParts)
+            {
+                if (part.PartID == PartID)
+                {
+                    foundPart = part;
+                }
+            }
+            return foundPart;
+        }
+
+        public static void updatePart(int PartID, Part partToUpdate)
+        {
+           for(int i = 0; i < allParts.Count; i++)
+            { 
+                if (allParts[i].PartID == PartID)
+                {
+                    allParts[i] = partToUpdate;
+                }
+            }
         }
     }
 }

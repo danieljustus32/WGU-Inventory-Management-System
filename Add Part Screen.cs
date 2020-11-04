@@ -252,6 +252,16 @@ namespace C968_PA_Task
                 this.Hide();
                 Program.mainScreen.Show();
             }
+            else
+            {
+                Outsourced partToAdd = new Outsourced(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                                                int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
+                                                int.Parse(textBoxMax.Text), textBoxMachineID.Text);
+                Inventory.addPart(partToAdd);
+                MessageBox.Show($"Added part: {Inventory.allParts[Inventory.allParts.Count - 1].Name} {Inventory.allParts[Inventory.allParts.Count - 1].Min}");
+                this.Hide();
+                Program.mainScreen.Show();
+            }
         }
 
         private void radioButtonOutsourced_CheckedChanged(object sender, EventArgs e)
