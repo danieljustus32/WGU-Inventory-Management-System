@@ -28,7 +28,13 @@ namespace C968_PA_Task
 
         private void deleteButton2_Click(object sender, EventArgs e)
         {
-
+            int id = 0;
+            if (partsGridView.SelectedRows.Count > 0)
+            {
+                id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            Part partToDelete = Inventory.lookupPart(id);
+            Inventory.deletePart(partToDelete);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

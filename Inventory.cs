@@ -63,11 +63,11 @@ namespace C968_PA_Task
         public static bool deletePart(Part partToDelete)
         {
             bool deleted = false;
-            foreach (var part in allParts)
+            for (int i = 0; i <= allParts.Count; i++)
             {
-                if (part.PartID == partToDelete.PartID)
+                if (allParts[i].PartID == partToDelete.PartID)
                 {
-                    allParts.Remove(part);
+                    allParts.Remove(allParts[i]);
                     deleted = true;
                 }
             }
