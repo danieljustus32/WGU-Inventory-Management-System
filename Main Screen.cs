@@ -39,7 +39,8 @@ namespace C968_PA_Task
         private void addButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Program.addorModifyPartScreen.Show();
+            Form2 addPartScreen = new Form2(null);
+            addPartScreen.Show();
         }
     }
 }

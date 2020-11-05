@@ -13,7 +13,6 @@ namespace C968_PA_Task
         ///  The main entry point for the application.
         /// </summary>
         public static Form1 mainScreen = new Form1();
-        public static Form2 addorModifyPartScreen = new Form2();
         [STAThread]
         static void Main()
         {
