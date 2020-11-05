@@ -17,6 +17,8 @@ namespace C968_PA_Task
         [STAThread]
         static void Main()
         {
+            Part p = new Inhouse(1, "Whatever", 1.00M, 1, 1, 10, 123);
+            Inventory.addPart(p);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

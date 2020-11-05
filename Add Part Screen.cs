@@ -33,9 +33,21 @@ namespace C968_PA_Task
         }
 
         // Instantiated when clicking 'Modify' after selecting an in-house part
-        public Form2(Inhouse partToModify)
+        public Form2(Part partToModify)
         {
             InitializeComponent();
+
+            if (partToModify is Inhouse)
+            {
+                radioButtonInhouse.Checked = true;
+                Inhouse p = partToModify as Inhouse;
+                textBoxMachineID.Text = p.MachineID.ToString();
+            }
+            else
+            {
+
+            }
+            
             // Set window title
             this.Text = "Modify Part";
             // Bind event handlers for error-checking and fill textBoxes
@@ -113,7 +125,6 @@ namespace C968_PA_Task
                 {
                     textBoxName.BackColor = Color.White;
                     saveButton.Enabled = true;
-                    // Clear the error, if any, in the error provider.
                     errorProvider1.SetError(this.textBoxName, String.Empty);
                 }
                 else
@@ -127,7 +138,6 @@ namespace C968_PA_Task
             {
                 textBoxName.BackColor = Color.White;
                 saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxName, String.Empty);
             }
         }
@@ -146,7 +156,6 @@ namespace C968_PA_Task
                 {
                     textBoxInventory.BackColor = Color.White;
                     saveButton.Enabled = true;
-                    // Clear the error, if any, in the error provider.
                     errorProvider1.SetError(this.textBoxInventory, String.Empty);
                 }
             }
@@ -154,7 +163,6 @@ namespace C968_PA_Task
             {
                 textBoxInventory.BackColor = Color.White;
                 saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxInventory, String.Empty);
             }
         }
@@ -173,7 +181,6 @@ namespace C968_PA_Task
                 {
                     textBoxPrice.BackColor = Color.White;
                     saveButton.Enabled = true;
-                    // Clear the error, if any, in the error provider.
                     errorProvider1.SetError(this.textBoxPrice, String.Empty);
                 }
             }
@@ -181,7 +188,6 @@ namespace C968_PA_Task
             {
                 textBoxPrice.BackColor = Color.White;
                 saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxPrice, String.Empty);
             }
         }
@@ -200,7 +206,6 @@ namespace C968_PA_Task
                 {
                     textBoxMin.BackColor = Color.White;
                     saveButton.Enabled = true;
-                    // Clear the error, if any, in the error provider.
                     errorProvider1.SetError(this.textBoxMin, String.Empty);
                 }
             }
@@ -208,7 +213,6 @@ namespace C968_PA_Task
             {
                 textBoxMin.BackColor = Color.White;
                 saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxMin, String.Empty);
             }
         }
@@ -227,7 +231,6 @@ namespace C968_PA_Task
                 {
                     textBoxMax.BackColor = Color.White;
                     saveButton.Enabled = true;
-                    // Clear the error, if any, in the error provider.
                     errorProvider1.SetError(this.textBoxMax, String.Empty);
                 }
             } 
@@ -235,7 +238,6 @@ namespace C968_PA_Task
             {
                 textBoxMax.BackColor = Color.White;
                 saveButton.Enabled = true;
-                // Clear the error, if any, in the error provider.
                 errorProvider1.SetError(this.textBoxMax, String.Empty);
             }
         }
@@ -248,8 +250,16 @@ namespace C968_PA_Task
                                                 int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text), 
                                                 int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
                 Inventory.addPart(partToAdd);
-                MessageBox.Show($"Added part: {Inventory.allParts[Inventory.allParts.Count - 1].Name}");
+                
+                // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
                 this.Hide();
+                foreach (Control C in this.Controls)
+                {
+                    if (C.GetType() == typeof(TextBox))
+                    {
+                        C.Text = null;
+                    }
+                }
                 Program.mainScreen.Show();
             }
             else
@@ -258,8 +268,16 @@ namespace C968_PA_Task
                                                 int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
                                                 int.Parse(textBoxMax.Text), textBoxMachineID.Text);
                 Inventory.addPart(partToAdd);
-                MessageBox.Show($"Added part: {Inventory.allParts[Inventory.allParts.Count - 1].Name} {Inventory.allParts[Inventory.allParts.Count - 1].Min}");
+               
+                // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
                 this.Hide();
+                foreach (Control C in this.Controls)
+                {
+                    if (C.GetType() == typeof(TextBox))
+                    {
+                        C.Text = null;
+                    }
+                }
                 Program.mainScreen.Show();
             }
         }

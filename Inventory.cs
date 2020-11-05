@@ -47,7 +47,7 @@ namespace C968_PA_Task
             return foundProduct;
         }
 
-        private void updateProduct(int ProductID, Product productToModify)
+        public void updateProduct(int ProductID, Product productToModify)
         {
 
         }
@@ -91,6 +91,7 @@ namespace C968_PA_Task
                 if (allParts[i].PartID == PartID)
                 {
                     allParts[i] = partToUpdate;
+                    return;
                 }
             }
         }

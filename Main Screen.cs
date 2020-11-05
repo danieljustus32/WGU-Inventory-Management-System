@@ -8,6 +8,7 @@ namespace C968_PA_Task
         public Form1()
         {
             InitializeComponent();
+            partsGridView.DataSource = Inventory.allParts;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
