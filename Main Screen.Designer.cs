@@ -127,6 +127,7 @@
             this.modifyButton2.TabIndex = 4;
             this.modifyButton2.Text = "Modify";
             this.modifyButton2.UseVisualStyleBackColor = true;
+            this.modifyButton2.Click += new System.EventHandler(this.modifyButton2_Click);
             // 
             // deleteButton2
             // 
@@ -173,6 +174,7 @@
             // 
             this.partsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.partsGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.partsGridView.Location = new System.Drawing.Point(40, 112);
             this.partsGridView.MultiSelect = false;
             this.partsGridView.Name = "partsGridView";

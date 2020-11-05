@@ -42,5 +42,17 @@ namespace C968_PA_Task
             Form2 addPartScreen = new Form2(null);
             addPartScreen.Show();
         }
+
+        private void modifyButton2_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            if (partsGridView.SelectedRows.Count > 0)
+            {
+                id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            Form2 modifyPartScreen = new Form2(Inventory.lookupPart(id));
+            this.Hide();
+            modifyPartScreen.Show();
+        }
     }
 }

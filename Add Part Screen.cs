@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ namespace C968_PA_Task
 {
     public partial class Form2 : Form
     {
+        private Part loadedPart { get; set; } = null;
         // Instantiated when clicking 'Modify' after selecting an in-house part
         public Form2(Part partToModify)
         {
@@ -37,10 +39,12 @@ namespace C968_PA_Task
             {
                 // Set window title
                 this.Text = "Modify Part";
+                loadedPart = partToModify;
                 // Bind event handlers for error-checking and fill textBoxes
                 // with the properties of selected part
                 radioButtonInhouse.Checked = true;
                 Inhouse part = partToModify as Inhouse;
+                textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
                 textBoxName.Validating += textBoxName_Validating;
                 textBoxInventory.Text = part.InStock.ToString();
@@ -58,10 +62,12 @@ namespace C968_PA_Task
             {
                 // Set window title
                 this.Text = "Modify Part";
+                loadedPart = partToModify;
                 // Bind event handlers for error-checking and fill textBoxes
                 // with the properties of selected part
                 radioButtonOutsourced.Checked = true;
                 Outsourced part = partToModify as Outsourced;
+                textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
                 textBoxName.Validating += textBoxName_Validating;
                 textBoxInventory.Text = part.InStock.ToString();
@@ -272,10 +278,17 @@ namespace C968_PA_Task
             {
                 if (radioButtonInhouse.Checked == true)
                 {
-                    Inhouse partToAdd = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                    Inhouse partToAddOrModify = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
                                                     int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
                                                     int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
-                    Inventory.addPart(partToAdd);
+                    if (loadedPart != null)
+                    {
+                        Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
+                    }
+                    else
+                    {
+                        Inventory.addPart(partToAddOrModify);
+                    }
 
                     // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
                     this.Hide();
@@ -290,10 +303,17 @@ namespace C968_PA_Task
                 }
                 else
                 {
-                    Outsourced partToAdd = new Outsourced(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                    Outsourced partToAddOrModify = new Outsourced(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
                                                     int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
                                                     int.Parse(textBoxMax.Text), textBoxMachineID.Text);
-                    Inventory.addPart(partToAdd);
+                    if (loadedPart != null)
+                    {
+                        Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
+                    }
+                    else
+                    {
+                        Inventory.addPart(partToAddOrModify);
+                    }
 
                     // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
                     this.Hide();
