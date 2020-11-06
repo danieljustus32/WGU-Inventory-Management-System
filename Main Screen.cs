@@ -34,7 +34,16 @@ namespace C968_PA_Task
                 id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
             }
             Part partToDelete = Inventory.lookupPart(id);
-            Inventory.deletePart(partToDelete);
+            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete part {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Inventory.deletePart(partToDelete);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            
         }
 
         private void exitButton_Click(object sender, EventArgs e)

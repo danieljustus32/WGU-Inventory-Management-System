@@ -276,6 +276,11 @@ namespace C968_PA_Task
             }
             if (formValidated == true)
             {
+                if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
+                {
+                    MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than maximum on-hand value");
+                    return;
+                }
                 if (radioButtonInhouse.Checked == true)
                 {
                     Inhouse partToAddOrModify = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
