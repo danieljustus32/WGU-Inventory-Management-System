@@ -57,7 +57,7 @@
             this.radioButtonInhouse.Location = new System.Drawing.Point(167, 12);
             this.radioButtonInhouse.Name = "radioButtonInhouse";
             this.radioButtonInhouse.Size = new System.Drawing.Size(74, 19);
-            this.radioButtonInhouse.TabIndex = 0;
+            this.radioButtonInhouse.TabIndex = 1;
             this.radioButtonInhouse.TabStop = true;
             this.radioButtonInhouse.Text = "In-House";
             this.radioButtonInhouse.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             this.radioButtonOutsourced.Location = new System.Drawing.Point(313, 12);
             this.radioButtonOutsourced.Name = "radioButtonOutsourced";
             this.radioButtonOutsourced.Size = new System.Drawing.Size(87, 19);
-            this.radioButtonOutsourced.TabIndex = 1;
+            this.radioButtonOutsourced.TabIndex = 2;
             this.radioButtonOutsourced.TabStop = true;
             this.radioButtonOutsourced.Text = "Outsourced";
             this.radioButtonOutsourced.UseVisualStyleBackColor = true;
@@ -81,42 +81,42 @@
             this.textBoxID.Location = new System.Drawing.Point(275, 99);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(125, 23);
-            this.textBoxID.TabIndex = 2;
+            this.textBoxID.TabIndex = 3;
             // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(275, 147);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(125, 23);
-            this.textBoxName.TabIndex = 2;
+            this.textBoxName.TabIndex = 4;
             // 
             // textBoxInventory
             // 
             this.textBoxInventory.Location = new System.Drawing.Point(275, 196);
             this.textBoxInventory.Name = "textBoxInventory";
             this.textBoxInventory.Size = new System.Drawing.Size(125, 23);
-            this.textBoxInventory.TabIndex = 2;
+            this.textBoxInventory.TabIndex = 5;
             // 
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(275, 243);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(125, 23);
-            this.textBoxPrice.TabIndex = 2;
+            this.textBoxPrice.TabIndex = 6;
             // 
             // textBoxMin
             // 
             this.textBoxMin.Location = new System.Drawing.Point(210, 293);
             this.textBoxMin.Name = "textBoxMin";
             this.textBoxMin.Size = new System.Drawing.Size(69, 23);
-            this.textBoxMin.TabIndex = 2;
+            this.textBoxMin.TabIndex = 7;
             // 
             // textBoxMax
             // 
             this.textBoxMax.Location = new System.Drawing.Point(330, 293);
             this.textBoxMax.Name = "textBoxMax";
             this.textBoxMax.Size = new System.Drawing.Size(70, 23);
-            this.textBoxMax.TabIndex = 2;
+            this.textBoxMax.TabIndex = 8;
             // 
             // labelID
             // 
@@ -177,7 +177,7 @@
             this.textBoxMachineID.Location = new System.Drawing.Point(275, 345);
             this.textBoxMachineID.Name = "textBoxMachineID";
             this.textBoxMachineID.Size = new System.Drawing.Size(125, 23);
-            this.textBoxMachineID.TabIndex = 2;
+            this.textBoxMachineID.TabIndex = 9;
             // 
             // labelMachineID
             // 
