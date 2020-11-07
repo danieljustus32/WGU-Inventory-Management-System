@@ -74,7 +74,7 @@ namespace C968_PA_Task
             {
                 foreach (DataGridViewRow row in partsGridView.Rows)
                 {
-                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    if (Regex.Match(row.Cells[0].Value.ToString(), $"{searchValue}").Success)
                     {
                         row.Selected = true;
                         partsGridView.CurrentCell = row.Cells[0];
