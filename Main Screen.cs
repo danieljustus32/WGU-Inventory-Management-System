@@ -80,6 +80,7 @@ namespace C968_PA_Task
                         partsGridView.CurrentCell = row.Cells[0];
                         break;
                     }
+
                 }
             }
             catch (Exception exc)

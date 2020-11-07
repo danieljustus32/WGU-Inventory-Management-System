@@ -89,20 +89,6 @@ namespace C968_PA_Task
             return foundPart;
         }
 
-        public static Part lookupPart(string searchString)
-        {
-            Part foundPart = null;
-            foreach (var part in allParts)
-            {
-                if (Regex.Match(part.Name.ToLower(), $"[{searchString.ToLower()}]").Success)
-                {
-                    foundPart = part;
-                    break;
-                }
-            }
-            return foundPart;
-        }
-
         public static void updatePart(int PartID, Part partToUpdate)
         {
            for(int i = 0; i < allParts.Count; i++)
