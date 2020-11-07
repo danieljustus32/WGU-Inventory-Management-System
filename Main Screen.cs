@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace C968_PA_Task
@@ -67,7 +68,24 @@ namespace C968_PA_Task
 
         private void buttonSearchParts_Click(object sender, EventArgs e)
         {
+            string searchValue = textBoxSearchParts.Text;
 
+            try
+            {
+                foreach (DataGridViewRow row in partsGridView.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        partsGridView.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

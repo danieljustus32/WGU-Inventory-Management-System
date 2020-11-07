@@ -80,9 +80,10 @@ namespace C968_PA_Task
             Part foundPart = null;
             foreach (var part in allParts)
             {
-                if (part.PartID == PartID)
+                if (Regex.Match(part.PartID.ToString(), $"{PartID}").Success)
                 {
                     foundPart = part;
+                    break;
                 }
             }
             return foundPart;
