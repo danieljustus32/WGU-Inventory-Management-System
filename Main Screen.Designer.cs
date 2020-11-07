@@ -73,6 +73,7 @@
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBox.Location = new System.Drawing.Point(1079, 75);
             this.searchBox.Name = "searchBox";
+            this.searchBox.PlaceholderText = "Search by product ID or name...";
             this.searchBox.Size = new System.Drawing.Size(262, 23);
             this.searchBox.TabIndex = 2;
             // 
@@ -168,6 +169,7 @@
             this.textBoxSearchParts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchParts.Location = new System.Drawing.Point(416, 75);
             this.textBoxSearchParts.Name = "textBoxSearchParts";
+            this.textBoxSearchParts.PlaceholderText = "Search by part ID or name...";
             this.textBoxSearchParts.Size = new System.Drawing.Size(262, 23);
             this.textBoxSearchParts.TabIndex = 2;
             // 
