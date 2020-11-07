@@ -80,7 +80,12 @@ namespace C968_PA_Task
                         partsGridView.CurrentCell = row.Cells[0];
                         break;
                     }
-
+                    if (Regex.Match(row.Cells[1].Value.ToString().ToLower(), $"{searchValue.ToLower()}").Success)
+                    {
+                        row.Selected = true;
+                        partsGridView.CurrentCell = row.Cells[0];
+                        break;
+                    }
                 }
             }
             catch (Exception exc)
