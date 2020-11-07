@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace C968_PA_Task
 {
@@ -82,6 +83,20 @@ namespace C968_PA_Task
                 if (part.PartID == PartID)
                 {
                     foundPart = part;
+                }
+            }
+            return foundPart;
+        }
+
+        public static Part lookupPart(string searchString)
+        {
+            Part foundPart = null;
+            foreach (var part in allParts)
+            {
+                if (Regex.Match(part.Name.ToLower(), $"[{searchString.ToLower()}]").Success)
+                {
+                    foundPart = part;
+                    break;
                 }
             }
             return foundPart;

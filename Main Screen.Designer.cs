@@ -38,8 +38,8 @@
             this.modifyButton2 = new System.Windows.Forms.Button();
             this.deleteButton2 = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonSearchParts = new System.Windows.Forms.Button();
+            this.textBoxSearchParts = new System.Windows.Forms.TextBox();
             this.partsGridView = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,7 +67,6 @@
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchBox
             // 
@@ -153,24 +152,24 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // button1
+            // buttonSearchParts
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(335, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.searchButton_Click);
+            this.buttonSearchParts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchParts.Location = new System.Drawing.Point(335, 75);
+            this.buttonSearchParts.Name = "buttonSearchParts";
+            this.buttonSearchParts.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchParts.TabIndex = 1;
+            this.buttonSearchParts.Text = "Search";
+            this.buttonSearchParts.UseVisualStyleBackColor = true;
+            this.buttonSearchParts.Click += new System.EventHandler(this.buttonSearchParts_Click);
             // 
-            // textBox1
+            // textBoxSearchParts
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(416, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(262, 23);
-            this.textBox1.TabIndex = 2;
+            this.textBoxSearchParts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchParts.Location = new System.Drawing.Point(416, 75);
+            this.textBoxSearchParts.Name = "textBoxSearchParts";
+            this.textBoxSearchParts.Size = new System.Drawing.Size(262, 23);
+            this.textBoxSearchParts.TabIndex = 2;
             // 
             // partsGridView
             // 
@@ -229,8 +228,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.partsGridView);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxSearchParts);
+            this.Controls.Add(this.buttonSearchParts);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.deleteButton2);
             this.Controls.Add(this.modifyButton2);
@@ -262,8 +261,8 @@
         private System.Windows.Forms.Button modifyButton2;
         private System.Windows.Forms.Button deleteButton2;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonSearchParts;
+        private System.Windows.Forms.TextBox textBoxSearchParts;
         private System.Windows.Forms.DataGridView partsGridView;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;

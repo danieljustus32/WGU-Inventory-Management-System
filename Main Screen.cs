@@ -11,11 +11,6 @@ namespace C968_PA_Task
             partsGridView.DataSource = Inventory.allParts;
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addButton1_Click(object sender, EventArgs e)
         {
 
@@ -68,6 +63,11 @@ namespace C968_PA_Task
             Form2 modifyPartScreen = new Form2(Inventory.lookupPart(id));
             this.Hide();
             modifyPartScreen.Show();
+        }
+
+        private void buttonSearchParts_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

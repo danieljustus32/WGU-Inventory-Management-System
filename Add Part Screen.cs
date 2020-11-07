@@ -13,6 +13,7 @@ namespace C968_PA_Task
     public partial class Form2 : Form
     {
         private Part loadedPart { get; set; } = null;
+        private bool formValid { get; set; }
         // Instantiated when clicking 'Modify' after selecting an in-house part
         public Form2(Part partToModify)
         {
@@ -28,12 +29,12 @@ namespace C968_PA_Task
                     possiblePartID = generator.Next(0, 1000000);
                 }
                 textBoxID.Text = possiblePartID.ToString();
-                textBoxName.Validating += textBoxName_Validating;
-                textBoxInventory.Validating += textBoxInventory_Validating;
-                textBoxPrice.Validating += textBoxPrice_Validating;
-                textBoxMin.Validating += textBoxMin_Validating;
-                textBoxMax.Validating += textBoxMax_Validating;
-                textBoxMachineID.Validating += textBoxMachineID_Validating;
+                textBoxName.TextChanged += textBoxName_TextChanged;
+                textBoxInventory.TextChanged += textBoxInventory_TextChanged;
+                textBoxPrice.TextChanged += textBoxPrice_TextChanged;
+                textBoxMin.TextChanged += textBoxMin_TextChanged;
+                textBoxMax.TextChanged += textBoxMax_TextChanged;
+                textBoxMachineID.TextChanged += textBoxMachineID_TextChanged;
             }
             else if (partToModify is Inhouse)
             {
@@ -46,17 +47,16 @@ namespace C968_PA_Task
                 Inhouse part = partToModify as Inhouse;
                 textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
-                textBoxName.Validating += textBoxName_Validating;
                 textBoxInventory.Text = part.InStock.ToString();
-                textBoxInventory.Validating += textBoxInventory_Validating;
+                textBoxInventory.TextChanged += textBoxInventory_TextChanged;
                 textBoxPrice.Text = part.Price.ToString();
-                textBoxPrice.Validating += textBoxPrice_Validating;
+                textBoxPrice.TextChanged += textBoxPrice_TextChanged;
                 textBoxMin.Text = part.Min.ToString();
-                textBoxMin.Validating += textBoxMin_Validating;
+                textBoxMin.TextChanged += textBoxMin_TextChanged;
                 textBoxMax.Text = part.Max.ToString();
-                textBoxMax.Validating += textBoxMax_Validating;
+                textBoxMax.TextChanged += textBoxMax_TextChanged;
                 textBoxMachineID.Text = part.MachineID.ToString();
-                textBoxMachineID.Validating += textBoxMachineID_Validating;
+                textBoxMachineID.TextChanged += textBoxMachineID_TextChanged;
             }
             else
             {
@@ -69,17 +69,16 @@ namespace C968_PA_Task
                 Outsourced part = partToModify as Outsourced;
                 textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
-                textBoxName.Validating += textBoxName_Validating;
                 textBoxInventory.Text = part.InStock.ToString();
-                textBoxInventory.Validating += textBoxInventory_Validating;
+                textBoxInventory.TextChanged += textBoxInventory_TextChanged;
                 textBoxPrice.Text = part.Price.ToString();
-                textBoxPrice.Validating += textBoxPrice_Validating;
+                textBoxPrice.TextChanged += textBoxPrice_TextChanged;
                 textBoxMin.Text = part.Min.ToString();
-                textBoxMin.Validating += textBoxMin_Validating;
+                textBoxMin.TextChanged += textBoxMin_TextChanged;
                 textBoxMax.Text = part.Max.ToString();
-                textBoxMax.Validating += textBoxMax_Validating;
-                textBoxMachineID.Validating += textBoxMachineID_Validating;
-            }
+                textBoxMax.TextChanged += textBoxMax_TextChanged;
+                textBoxMachineID.Text = part.CompanyName.ToString();
+                textBoxMachineID.TextChanged += textBoxMachineID_TextChanged;            }
         }
 
         private bool CheckPartID(int partID)
@@ -102,6 +101,7 @@ namespace C968_PA_Task
             }
         }
 
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -109,7 +109,7 @@ namespace C968_PA_Task
             mainScreen.Show();
         }
 
-        private void textBoxName_Validating(object sender, CancelEventArgs e)
+        private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             if (textBoxName.Text != "")
             {
@@ -119,21 +119,24 @@ namespace C968_PA_Task
                 {
                     textBoxName.BackColor = Color.White;
                     errorProvider1.SetError(this.textBoxName, String.Empty);
+                    saveButton.Enabled = true;
                 }
                 else
                 {
                     textBoxName.BackColor = Color.Tomato;
-                    errorProvider1.SetError(this.textBoxName, "Part's name must be text and first letter must be capitalized");
+                    errorProvider1.SetError(this.textBoxName, "Part's name must be text, first letter must be capitalized, and name cannot contain a number");
+                    saveButton.Enabled = false;
                 }
             }
             else
             {
                 textBoxName.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxName, String.Empty);
+                saveButton.Enabled = true;
             }
         }
         
-        private void textBoxInventory_Validating(object sender, CancelEventArgs e)
+        private void textBoxInventory_TextChanged(object sender, EventArgs e)
         {
             if (textBoxInventory.Text != "")
             {
@@ -141,21 +144,24 @@ namespace C968_PA_Task
                 {
                     textBoxInventory.BackColor = Color.Tomato;
                     errorProvider1.SetError(this.textBoxInventory, "Inventory must be a positive number between 0 and 99");
+                    saveButton.Enabled = false;
                 }
                 else
                 {
                     textBoxInventory.BackColor = Color.White;
                     errorProvider1.SetError(this.textBoxInventory, String.Empty);
+                    saveButton.Enabled = true;
                 }
             }
             else
             {
                 textBoxInventory.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxInventory, String.Empty);
+                saveButton.Enabled = true;
             }
         }
 
-        private void textBoxPrice_Validating(object sender, CancelEventArgs e)
+        private void textBoxPrice_TextChanged(object sender, EventArgs e)
         {
             if (textBoxPrice.Text != "")
             {
@@ -163,21 +169,24 @@ namespace C968_PA_Task
                 {
                     textBoxPrice.BackColor = Color.Tomato;
                     errorProvider1.SetError(this.textBoxPrice, "Price must be a decimal in xx.xx or x.xx format, no need to enter a dollar sign");
+                    saveButton.Enabled = false;
                 }
                 else
                 {
                     textBoxPrice.BackColor = Color.White;
                     errorProvider1.SetError(this.textBoxPrice, String.Empty);
+                    saveButton.Enabled = true;
                 }
             }
             else
             {
                 textBoxPrice.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxPrice, String.Empty);
+                saveButton.Enabled = true;
             }
         }
 
-        private void textBoxMin_Validating(object sender, CancelEventArgs e)
+        private void textBoxMin_TextChanged(object sender, EventArgs e)
         {
             if (textBoxMin.Text != "")
             {
@@ -185,21 +194,24 @@ namespace C968_PA_Task
                 {
                     textBoxMin.BackColor = Color.Tomato;
                     errorProvider1.SetError(this.textBoxMin, "Minimum quantity on hand must be a positive number and must be less than 1000");
+                    saveButton.Enabled = false;
                 }
                 else
                 {
                     textBoxMin.BackColor = Color.White;
                     errorProvider1.SetError(this.textBoxMin, String.Empty);
+                    saveButton.Enabled = true;
                 }
             }
             else
             {
                 textBoxMin.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxMin, String.Empty);
+                saveButton.Enabled = true;
             }
         }
 
-        private void textBoxMax_Validating(object sender, CancelEventArgs e)
+        private void textBoxMax_TextChanged(object sender, EventArgs e)
         {
             if (textBoxMax.Text != "")
             {
@@ -207,21 +219,24 @@ namespace C968_PA_Task
                 {
                     textBoxMax.BackColor = Color.Tomato;
                     errorProvider1.SetError(this.textBoxMax, "Maximum quantity on hand must be a positive number and must be less than 1000");
+                    saveButton.Enabled = false;
                 }
                 else
                 {
                     textBoxMax.BackColor = Color.White;
                     errorProvider1.SetError(this.textBoxMax, String.Empty);
+                    saveButton.Enabled = true;
                 }
             } 
             else
             {
                 textBoxMax.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxMax, String.Empty);
+                saveButton.Enabled = true;
             }
         }
 
-        private void textBoxMachineID_Validating(object sender, CancelEventArgs e)
+        private void textBoxMachineID_TextChanged(object sender, EventArgs e)
         {
             if (textBoxMachineID.Text != "")
             {
@@ -231,11 +246,13 @@ namespace C968_PA_Task
                     {
                         textBoxMachineID.BackColor = Color.Tomato;
                         errorProvider1.SetError(this.textBoxMachineID, "Machine ID must be a number");
+                        saveButton.Enabled = false;
                     }
                     else
                     {
                         textBoxMachineID.BackColor = Color.White;
                         errorProvider1.SetError(this.textBoxMachineID, String.Empty);
+                        saveButton.Enabled = true;
                     }
                 }
                 else
@@ -244,11 +261,13 @@ namespace C968_PA_Task
                     {
                         textBoxMachineID.BackColor = Color.White;
                         errorProvider1.SetError(this.textBoxMachineID, String.Empty);
+                        saveButton.Enabled = true;
                     }
                     else
                     {
                         textBoxMachineID.BackColor = Color.Tomato;
-                        errorProvider1.SetError(this.textBoxMachineID, "Part's name must be text and first letter must be capitalized");
+                        errorProvider1.SetError(this.textBoxMachineID, "Company name must be text, first letter must be capitalized and name cannot contain a number");
+                        saveButton.Enabled = false;
                     }
                 }
             }
@@ -256,31 +275,36 @@ namespace C968_PA_Task
             {
                 textBoxMachineID.BackColor = Color.White;
                 errorProvider1.SetError(this.textBoxMachineID, String.Empty);
+                saveButton.Enabled = true;
             }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            bool formValidated = true;
+            bool formFilled = true;
             foreach (Control control in this.Controls)
             {
-                // TODO: Check that all fields are filled out, check other conditions in task description as well (e.g. Inventory > Max)
-                if (errorProvider1.GetError(control) != String.Empty)
-                {
-                    formValidated = false;
-                }
                 if (control.GetType() == typeof(TextBox) && control.Text  == String.Empty)
                 {
-                    formValidated = false;
+                    formFilled = false;
                 }
             }
-            if (formValidated == true)
+            if (formFilled == true)
             {
-                if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
+                // Check that min is less than or equal to max
+                if (int.Parse(textBoxMin.Text) > int.Parse(textBoxMax.Text))
                 {
-                    MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than maximum on-hand value");
+                    MessageBox.Show("Minimum inventory on hand must be less than or equal to maximum inventory on hand");
                     return;
                 }
+
+                // Check that inventory falls between min and max values
+                if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
+                {
+                    MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than or equal to maximum on-hand value");
+                    return;
+                }
+
                 if (radioButtonInhouse.Checked == true)
                 {
                     Inhouse partToAddOrModify = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
@@ -334,9 +358,9 @@ namespace C968_PA_Task
             } 
             else
             {
-                // Set formValidated back to true for subsequent validations
-                formValidated = true;
-                MessageBox.Show($"Please fill out all fields and correct any errors before saving this part");
+                // Set formFilled back to true for subsequent validations
+                formFilled = true;
+                MessageBox.Show($"Please fill out all fields before saving this part");
             }
         }
 
@@ -345,6 +369,7 @@ namespace C968_PA_Task
             if (radioButtonOutsourced.Checked == true)
             {
                 labelMachineID.Text = "Company Name";
+                textBoxMachineID.Text = "";
             }
         }
 
@@ -353,6 +378,7 @@ namespace C968_PA_Task
             if (radioButtonInhouse.Checked == true)
             {
                 labelMachineID.Text = "Machine ID";
+                textBoxMachineID.Text = "";
             }
         }
     }
