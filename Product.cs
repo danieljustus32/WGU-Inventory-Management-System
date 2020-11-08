@@ -15,12 +15,22 @@ namespace C968_PA_Task
         public int Min { get; set; }
         public int Max { get; set; }
 
-        private void addAssociatedPart(Part partToAdd)
+        public Product(int ID, string name, decimal price, int inStock, int min, int max)
+        {
+            ProductID = ID;
+            Name = name;
+            Price = price;
+            InStock = inStock;
+            Min = min;
+            Max = max;
+        }
+
+        public void addAssociatedPart(Part partToAdd)
         {
             associatedParts.Add(partToAdd);
         }
 
-        private bool removeAssociatedPart(int PartID)
+        public bool removeAssociatedPart(int PartID)
         {
             var deleted = false;
             foreach (var part in associatedParts)

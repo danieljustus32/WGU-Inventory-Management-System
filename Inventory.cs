@@ -37,7 +37,7 @@ namespace C968_PA_Task
 
         public static Product lookupProduct(int ProductID)
         {
-            Product foundProduct = new Product();
+            Product foundProduct = null;
             foreach (var product in products)
             {
                 if (product.ProductID == ProductID)
