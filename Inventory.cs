@@ -16,12 +16,12 @@ namespace C968_PA_Task
 
         }
         
-        private static void addProduct(Product productToAdd)
+        public static void addProduct(Product productToAdd)
         {
             products.Add(productToAdd);
         }
 
-        private static bool removeProduct(int ProductID)
+        public static bool removeProduct(int ProductID)
         {
             var deleted = false;
             foreach(var product in products)

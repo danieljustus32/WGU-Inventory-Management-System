@@ -10,6 +10,7 @@ namespace C968_PA_Task
         {
             InitializeComponent();
             partsGridView.DataSource = Inventory.allParts;
+            productGridView.DataSource = Inventory.products;
         }
 
         private void addButton1_Click(object sender, EventArgs e)

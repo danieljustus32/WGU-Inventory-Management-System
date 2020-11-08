@@ -17,6 +17,7 @@ namespace C968_PA_Task
 
         public Product(int ID, string name, decimal price, int inStock, int min, int max)
         {
+            associatedParts = new BindingList<Part>();
             ProductID = ID;
             Name = name;
             Price = price;
@@ -44,17 +45,17 @@ namespace C968_PA_Task
             return deleted;
         }
 
-        //private Part lookupAssociatedPart(int PartID)
-        //{
-        //    Part foundPart = new Inhouse();
-        //    foreach (var part in associatedParts)
-        //    {
-        //        if (part.PartID == PartID)
-        //        {
-        //            foundPart = part;
-        //        }
-        //    }
-        //    return foundPart;
-        //}
+        public Part lookupAssociatedPart(int PartID)
+        {
+            Part foundPart = null;
+            foreach (var part in associatedParts)
+            {
+                if (part.PartID == PartID)
+                {
+                    foundPart = part;
+                }
+            }
+            return foundPart;
+        }
     }
 }

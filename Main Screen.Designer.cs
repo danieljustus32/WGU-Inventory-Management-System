@@ -41,11 +41,11 @@
             this.buttonSearchParts = new System.Windows.Forms.Button();
             this.textBoxSearchParts = new System.Windows.Forms.TextBox();
             this.partsGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.partsGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // IMSLabel
@@ -187,17 +187,17 @@
             this.partsGridView.TabIndex = 8;
             this.partsGridView.Text = "dataGridView1";
             // 
-            // dataGridView1
+            // productGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.Location = new System.Drawing.Point(703, 112);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 348);
-            this.dataGridView1.TabIndex = 8;
-            this.dataGridView1.Text = "dataGridView1";
+            this.productGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.productGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productGridView.Location = new System.Drawing.Point(703, 112);
+            this.productGridView.Name = "productGridView";
+            this.productGridView.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.productGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.productGridView.Size = new System.Drawing.Size(638, 348);
+            this.productGridView.TabIndex = 8;
+            this.productGridView.Text = "dataGridView1";
             // 
             // label1
             // 
@@ -228,7 +228,7 @@
             this.ClientSize = new System.Drawing.Size(1386, 622);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.productGridView);
             this.Controls.Add(this.partsGridView);
             this.Controls.Add(this.textBoxSearchParts);
             this.Controls.Add(this.buttonSearchParts);
@@ -245,7 +245,7 @@
             this.Name = "Form1";
             this.Text = "Inventory Management System";
             ((System.ComponentModel.ISupportInitialize)(this.partsGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,7 +266,7 @@
         private System.Windows.Forms.Button buttonSearchParts;
         private System.Windows.Forms.TextBox textBoxSearchParts;
         private System.Windows.Forms.DataGridView partsGridView;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView productGridView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
