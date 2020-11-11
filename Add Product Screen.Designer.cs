@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxInventory = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.textBoxMax = new System.Windows.Forms.TextBox();
+            this.textBoxMin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,8 +49,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cancelButton
@@ -60,6 +63,7 @@
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // saveButton
             // 
@@ -69,10 +73,11 @@
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(1087, 332);
+            this.addButton.Location = new System.Drawing.Point(1089, 332);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 35);
             this.addButton.TabIndex = 2;
@@ -88,54 +93,55 @@
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(950, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 23);
-            this.textBox1.TabIndex = 5;
+            this.searchBox.Location = new System.Drawing.Point(950, 73);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(212, 23);
+            this.searchBox.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxID
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 172);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 23);
-            this.textBox2.TabIndex = 6;
+            this.textBoxID.Enabled = false;
+            this.textBoxID.Location = new System.Drawing.Point(144, 172);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(148, 23);
+            this.textBoxID.TabIndex = 6;
             // 
-            // textBox3
+            // textBoxName
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 223);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 23);
-            this.textBox3.TabIndex = 7;
+            this.textBoxName.Location = new System.Drawing.Point(144, 223);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(148, 23);
+            this.textBoxName.TabIndex = 7;
             // 
-            // textBox4
+            // textBoxInventory
             // 
-            this.textBox4.Location = new System.Drawing.Point(144, 273);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(148, 23);
-            this.textBox4.TabIndex = 8;
+            this.textBoxInventory.Location = new System.Drawing.Point(144, 273);
+            this.textBoxInventory.Name = "textBoxInventory";
+            this.textBoxInventory.Size = new System.Drawing.Size(148, 23);
+            this.textBoxInventory.TabIndex = 8;
             // 
-            // textBox5
+            // textBoxPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(144, 324);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(148, 23);
-            this.textBox5.TabIndex = 9;
+            this.textBoxPrice.Location = new System.Drawing.Point(144, 324);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(148, 23);
+            this.textBoxPrice.TabIndex = 9;
             // 
-            // textBox6
+            // textBoxMax
             // 
-            this.textBox6.Location = new System.Drawing.Point(106, 379);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 10;
+            this.textBoxMax.Location = new System.Drawing.Point(106, 379);
+            this.textBoxMax.Name = "textBoxMax";
+            this.textBoxMax.Size = new System.Drawing.Size(100, 23);
+            this.textBoxMax.TabIndex = 10;
             // 
-            // textBox7
+            // textBoxMin
             // 
-            this.textBox7.Location = new System.Drawing.Point(291, 379);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 23);
-            this.textBox7.TabIndex = 11;
+            this.textBoxMin.Location = new System.Drawing.Point(291, 379);
+            this.textBoxMin.Name = "textBoxMin";
+            this.textBoxMin.Size = new System.Drawing.Size(100, 23);
+            this.textBoxMin.TabIndex = 11;
             // 
             // label1
             // 
@@ -219,11 +225,15 @@
             this.dataGridView2.TabIndex = 19;
             this.dataGridView2.Text = "dataGridView2";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 673);
+            this.ClientSize = new System.Drawing.Size(1271, 690);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label7);
@@ -233,13 +243,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxMin);
+            this.Controls.Add(this.textBoxMax);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.textBoxInventory);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBoxID);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.saveButton);
@@ -248,6 +258,7 @@
             this.Text = "AddOrModifyPartForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,13 +270,13 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxInventory;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.TextBox textBoxMax;
+        private System.Windows.Forms.TextBox textBoxMin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -275,5 +286,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

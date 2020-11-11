@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.IMSLabel = new System.Windows.Forms.Label();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchBox = new System.Windows.Forms.TextBox();
+            this.buttonSearchProducts = new System.Windows.Forms.Button();
+            this.textBoxSearchProducts = new System.Windows.Forms.TextBox();
             this.addButton1 = new System.Windows.Forms.Button();
             this.modifyButton1 = new System.Windows.Forms.Button();
             this.deleteButton1 = new System.Windows.Forms.Button();
@@ -58,24 +58,25 @@
             this.IMSLabel.TabIndex = 0;
             this.IMSLabel.Text = "Inventory Management System";
             // 
-            // searchButton
+            // buttonSearchProducts
             // 
-            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchButton.Location = new System.Drawing.Point(998, 75);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 1;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.buttonSearchProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchProducts.Location = new System.Drawing.Point(998, 75);
+            this.buttonSearchProducts.Name = "buttonSearchProducts";
+            this.buttonSearchProducts.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchProducts.TabIndex = 1;
+            this.buttonSearchProducts.Text = "Search";
+            this.buttonSearchProducts.UseVisualStyleBackColor = true;
+            this.buttonSearchProducts.Click += new System.EventHandler(this.buttonSearchProducts_Click);
             // 
-            // searchBox
+            // textBoxSearchProducts
             // 
-            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(1079, 75);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.PlaceholderText = "Search by product ID or name...";
-            this.searchBox.Size = new System.Drawing.Size(262, 23);
-            this.searchBox.TabIndex = 2;
+            this.textBoxSearchProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchProducts.Location = new System.Drawing.Point(1079, 75);
+            this.textBoxSearchProducts.Name = "textBoxSearchProducts";
+            this.textBoxSearchProducts.PlaceholderText = "Search by product ID or name...";
+            this.textBoxSearchProducts.Size = new System.Drawing.Size(262, 23);
+            this.textBoxSearchProducts.TabIndex = 2;
             // 
             // addButton1
             // 
@@ -239,8 +240,8 @@
             this.Controls.Add(this.deleteButton1);
             this.Controls.Add(this.modifyButton1);
             this.Controls.Add(this.addButton1);
-            this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.textBoxSearchProducts);
+            this.Controls.Add(this.buttonSearchProducts);
             this.Controls.Add(this.IMSLabel);
             this.Name = "Form1";
             this.Text = "Inventory Management System";
@@ -254,8 +255,8 @@
         #endregion
 
         private System.Windows.Forms.Label IMSLabel;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Button buttonSearchProducts;
+        private System.Windows.Forms.TextBox textBoxSearchProducts;
         private System.Windows.Forms.Button addButton1;
         private System.Windows.Forms.Button modifyButton1;
         private System.Windows.Forms.Button deleteButton1;

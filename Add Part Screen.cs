@@ -47,6 +47,7 @@ namespace C968_PA_Task
                 Inhouse part = partToModify as Inhouse;
                 textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
+                textBoxName.TextChanged += textBoxName_TextChanged;
                 textBoxInventory.Text = part.InStock.ToString();
                 textBoxInventory.TextChanged += textBoxInventory_TextChanged;
                 textBoxPrice.Text = part.Price.ToString();
@@ -69,6 +70,7 @@ namespace C968_PA_Task
                 Outsourced part = partToModify as Outsourced;
                 textBoxID.Text = part.PartID.ToString();
                 textBoxName.Text = part.Name;
+                textBoxName.TextChanged += textBoxName_TextChanged;
                 textBoxInventory.Text = part.InStock.ToString();
                 textBoxInventory.TextChanged += textBoxInventory_TextChanged;
                 textBoxPrice.Text = part.Price.ToString();
@@ -78,7 +80,8 @@ namespace C968_PA_Task
                 textBoxMax.Text = part.Max.ToString();
                 textBoxMax.TextChanged += textBoxMax_TextChanged;
                 textBoxMachineID.Text = part.CompanyName.ToString();
-                textBoxMachineID.TextChanged += textBoxMachineID_TextChanged;            }
+                textBoxMachineID.TextChanged += textBoxMachineID_TextChanged;            
+            }
         }
 
         private bool CheckPartID(int partID)

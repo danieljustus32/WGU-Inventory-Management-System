@@ -5,7 +5,7 @@ using System.Text;
 
 namespace C968_PA_Task
 {
-    class Product
+    public class Product
     {
         public BindingList<Part> associatedParts;
         public int ProductID { get; set; }
