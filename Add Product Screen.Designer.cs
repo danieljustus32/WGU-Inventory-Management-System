@@ -47,11 +47,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.candidatePartsGridView = new System.Windows.Forms.DataGridView();
+            this.associatedPartsGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.candidatePartsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +85,7 @@
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // searchButton
             // 
@@ -207,35 +210,57 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Min";
             // 
-            // dataGridView1
+            // candidatePartsGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(620, 121);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 206);
-            this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.Text = "dataGridView1";
+            this.candidatePartsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.candidatePartsGridView.Location = new System.Drawing.Point(620, 121);
+            this.candidatePartsGridView.Name = "candidatePartsGridView";
+            this.candidatePartsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.candidatePartsGridView.Size = new System.Drawing.Size(544, 206);
+            this.candidatePartsGridView.TabIndex = 19;
+            this.candidatePartsGridView.Text = "dataGridView1";
             // 
-            // dataGridView2
+            // associatedPartsGridView
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(618, 416);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(544, 206);
-            this.dataGridView2.TabIndex = 19;
-            this.dataGridView2.Text = "dataGridView2";
+            this.associatedPartsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.associatedPartsGridView.Location = new System.Drawing.Point(618, 416);
+            this.associatedPartsGridView.Name = "associatedPartsGridView";
+            this.associatedPartsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.associatedPartsGridView.Size = new System.Drawing.Size(544, 206);
+            this.associatedPartsGridView.TabIndex = 19;
+            this.associatedPartsGridView.Text = "dataGridView2";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(620, 92);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(107, 15);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "All Candidate Parts";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(618, 387);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(186, 15);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Parts Associated with this Product";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 690);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.associatedPartsGridView);
+            this.Controls.Add(this.candidatePartsGridView);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -256,8 +281,8 @@
             this.Controls.Add(this.cancelButton);
             this.Name = "Form3";
             this.Text = "AddOrModifyPartForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.candidatePartsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -284,8 +309,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView candidatePartsGridView;
+        private System.Windows.Forms.DataGridView associatedPartsGridView;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }

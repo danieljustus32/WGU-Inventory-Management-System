@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -13,10 +14,14 @@ namespace C968_PA_Task
     {
         private Product loadedProduct { get; set; } = null;
         private bool formValid { get; set; }
+        private BindingList<Part> partsToBeAssociated = new BindingList<Part>();
 
         public Form3(Product productToModify)
         {
             InitializeComponent();
+            candidatePartsGridView.DataSource = Inventory.allParts;
+            associatedPartsGridView.DataSource = this.partsToBeAssociated;
+            
 
             if (productToModify is null)
             {
@@ -267,6 +272,35 @@ namespace C968_PA_Task
                     MessageBox.Show($"Please fill out all fields before saving this part");
                 }
             }
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+            if (checkDuplicate(id) == null)
+            {
+                Part partToAdd = Inventory.lookupPart(id);
+                partsToBeAssociated.Add(partToAdd);
+            }
+            else
+            {
+                MessageBox.Show("This part has already been added");
+            }
+        }
+
+        // Helper methods
+        private Part checkDuplicate(int PartID)
+        {
+            Part foundPart = null;
+            foreach (var part in partsToBeAssociated)
+            {
+                if (Regex.Match(part.PartID.ToString(), $"{PartID}").Success)
+                {
+                    foundPart = part;
+                    break;
+                }
+            }
+            return foundPart;
         }
     }
 }

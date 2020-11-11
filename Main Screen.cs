@@ -49,7 +49,6 @@ namespace C968_PA_Task
             {
                 return;
             }
-            
         }
 
         private void exitButton_Click(object sender, EventArgs e)
