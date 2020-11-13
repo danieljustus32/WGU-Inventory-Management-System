@@ -34,11 +34,11 @@ namespace C968_PA_Task
         public bool removeAssociatedPart(int PartID)
         {
             var deleted = false;
-            foreach (var part in associatedParts)
+            for (int i = 0; i < associatedParts.Count; i++)
             {
-                if (part.PartID == PartID)
+                if (associatedParts[i].PartID == PartID)
                 {
-                    associatedParts.Remove(part);
+                    associatedParts.Remove(associatedParts[i]);
                     deleted = true;
                 }
             }

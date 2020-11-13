@@ -52,6 +52,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.candidatePartsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.associatedPartsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -59,7 +60,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(1087, 628);
+            this.cancelButton.Location = new System.Drawing.Point(1087, 702);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 33);
             this.cancelButton.TabIndex = 0;
@@ -69,7 +70,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(984, 628);
+            this.saveButton.Location = new System.Drawing.Point(984, 702);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 33);
             this.saveButton.TabIndex = 1;
@@ -252,11 +253,22 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Parts Associated with this Product";
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(1087, 628);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 37);
+            this.buttonDelete.TabIndex = 22;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 690);
+            this.ClientSize = new System.Drawing.Size(1271, 747);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.associatedPartsGridView);
@@ -314,5 +326,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

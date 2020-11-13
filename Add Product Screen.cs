@@ -44,6 +44,10 @@ namespace C968_PA_Task
                 // Set window title
                 this.Text = "Modify Part";
                 loadedProduct = productToModify;
+                foreach (var part in loadedProduct.associatedParts)
+                {
+                    partsToBeAssociated.Add(part);
+                }
                 // Bind event handlers for error-checking and fill textBoxes
                 // with the properties of selected part
                 textBoxID.Text = loadedProduct.ProductID.ToString();
@@ -247,10 +251,37 @@ namespace C968_PA_Task
                                                     int.Parse(textBoxMax.Text));
                     if (loadedProduct != null)
                     {
+                        foreach (var part in partsToBeAssociated)
+                        {
+                            if (!loadedProduct.associatedParts.Contains(part))
+                            {
+                                loadedProduct.addAssociatedPart(part);
+                            }
+                        }
+                        // Check to make sure the product we're about to save has at least one associated part. If not, 
+                        // alert the user and do nothing.
+                        if (loadedProduct.associatedParts.Count == 0)
+                        {
+                            MessageBox.Show("All products must have at least one associated part");
+                            return;
+                        }
+                        // Save
                         Inventory.updateProduct(productToAddOrModify.ProductID, productToAddOrModify);
                     }
                     else
                     {
+                        foreach (var part in partsToBeAssociated)
+                        {
+                            productToAddOrModify.addAssociatedPart(part);
+                        }
+                        // Check to make sure the product we're about to save has at least one associated part. If not, 
+                        // alert the user and do nothing.
+                        if (loadedProduct.associatedParts.Count == 0)
+                        {
+                            MessageBox.Show("All products must have at least one associated part");
+                            return;
+                        }
+                        // Save
                         Inventory.addProduct(productToAddOrModify);
                     }
 
@@ -301,6 +332,32 @@ namespace C968_PA_Task
                 }
             }
             return foundPart;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(associatedPartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+            if (loadedProduct != null)
+            {
+                loadedProduct.removeAssociatedPart(id);
+                for (int i = 0; i < partsToBeAssociated.Count; i++)
+                {
+                    if (partsToBeAssociated[i].PartID == id)
+                    {
+                        partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < partsToBeAssociated.Count; i++)
+                {
+                    if (partsToBeAssociated[i].PartID == id)
+                    {
+                        partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                    }
+                }
+            }
         }
     }
 }
