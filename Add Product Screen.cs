@@ -308,30 +308,8 @@ namespace C968_PA_Task
         private void addButton_Click(object sender, EventArgs e)
         {
             int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
-            if (checkDuplicate(id) == null)
-            {
-                Part partToAdd = Inventory.lookupPart(id);
-                partsToBeAssociated.Add(partToAdd);
-            }
-            else
-            {
-                MessageBox.Show("This part has already been added");
-            }
-        }
-
-        // Helper methods
-        private Part checkDuplicate(int PartID)
-        {
-            Part foundPart = null;
-            foreach (var part in partsToBeAssociated)
-            {
-                if (Regex.Match(part.PartID.ToString(), $"{PartID}").Success)
-                {
-                    foundPart = part;
-                    break;
-                }
-            }
-            return foundPart;
+            Part partToAdd = Inventory.lookupPart(id);
+            partsToBeAssociated.Add(partToAdd);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
