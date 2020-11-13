@@ -24,11 +24,11 @@ namespace C968_PA_Task
         public static bool removeProduct(int ProductID)
         {
             var deleted = false;
-            foreach(var product in products)
+            for (int i = 0; i < products.Count; i++)
             {
-                if (product.ProductID == ProductID)
+                if (products[i].ProductID == ProductID)
                 {
-                    products.Remove(product);
+                    products.Remove(products[i]);
                     deleted = true;
                 }
             }
@@ -38,19 +38,26 @@ namespace C968_PA_Task
         public static Product lookupProduct(int ProductID)
         {
             Product foundProduct = null;
-            foreach (var product in products)
+            for (int i = 0; i < products.Count; i++)
             {
-                if (product.ProductID == ProductID)
+                if (products[i].ProductID == ProductID)
                 {
-                    foundProduct = product;
+                    foundProduct = products[i];
                 }
             }
             return foundProduct;
         }
 
-        public static void updateProduct(int ProductID, Product productToModify)
+        public static void updateProduct(int ProductID, Product productToUpdate)
         {
-
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ProductID == ProductID)
+                {
+                    products[i] = productToUpdate;
+                    return;
+                }
+            }
         }
 
         public static void addPart(Part partToAdd)

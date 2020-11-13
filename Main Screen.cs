@@ -130,5 +130,24 @@ namespace C968_PA_Task
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void deleteButton1_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            if (productGridView.SelectedRows.Count > 0)
+            {
+                id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            Product productToDelete = Inventory.lookupProduct(id);
+            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete product {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Inventory.removeProduct(productToDelete.ProductID);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+        }
     }
 }
