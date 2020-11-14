@@ -33,7 +33,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.searchBox = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxInventory = new System.Windows.Forms.TextBox();
@@ -96,13 +96,14 @@
             this.searchButton.TabIndex = 4;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // searchBox
+            // textBoxSearch
             // 
-            this.searchBox.Location = new System.Drawing.Point(950, 73);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(212, 23);
-            this.searchBox.TabIndex = 5;
+            this.textBoxSearch.Location = new System.Drawing.Point(950, 73);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(212, 23);
+            this.textBoxSearch.TabIndex = 5;
             // 
             // textBoxID
             // 
@@ -233,6 +234,7 @@
             // 
             // errorProvider1
             // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
             // label8
@@ -286,7 +288,7 @@
             this.Controls.Add(this.textBoxInventory);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxID);
-            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.saveButton);
@@ -307,7 +309,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxInventory;

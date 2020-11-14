@@ -47,6 +47,7 @@ namespace C968_PA_Task
 
         public Part lookupAssociatedPart(int PartID)
         {
+            // Return null if not found so we can check if parts exist when calling from other classes
             Part foundPart = null;
             foreach (var part in associatedParts)
             {

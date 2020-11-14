@@ -22,32 +22,46 @@ namespace C968_PA_Task
 
         private void modifyButton1_Click(object sender, EventArgs e)
         {
-            int id = 0;
-            if (productGridView.SelectedRows.Count > 0)
+            try
             {
-                id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
+                int id = 0;
+                if (productGridView.SelectedRows.Count > 0)
+                {
+                    id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
+                }
+                Form3 modifyProductScreen = new Form3(Inventory.lookupProduct(id));
+                this.Hide();
+                modifyProductScreen.Show();
             }
-            Form3 modifyProductScreen = new Form3(Inventory.lookupProduct(id));
-            this.Hide();
-            modifyProductScreen.Show();
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void deleteButton2_Click(object sender, EventArgs e)
         {
-            int id = 0;
-            if (partsGridView.SelectedRows.Count > 0)
+            try
             {
-                id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                int id = 0;
+                if (partsGridView.SelectedRows.Count > 0)
+                {
+                    id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                }
+                Part partToDelete = Inventory.lookupPart(id);
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete part {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Inventory.deletePart(partToDelete);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
             }
-            Part partToDelete = Inventory.lookupPart(id);
-            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete part {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            catch (Exception exc)
             {
-                Inventory.deletePart(partToDelete);
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                return;
+                MessageBox.Show(exc.Message);
             }
         }
 
@@ -65,14 +79,21 @@ namespace C968_PA_Task
 
         private void modifyButton2_Click(object sender, EventArgs e)
         {
-            int id = 0;
-            if (partsGridView.SelectedRows.Count > 0)
+            try
             {
-                id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                int id = 0;
+                if (partsGridView.SelectedRows.Count > 0)
+                {
+                    id = int.Parse(partsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                }
+                Form2 modifyPartScreen = new Form2(Inventory.lookupPart(id));
+                this.Hide();
+                modifyPartScreen.Show();
             }
-            Form2 modifyPartScreen = new Form2(Inventory.lookupPart(id));
-            this.Hide();
-            modifyPartScreen.Show();
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void buttonSearchParts_Click(object sender, EventArgs e)
@@ -133,20 +154,27 @@ namespace C968_PA_Task
 
         private void deleteButton1_Click(object sender, EventArgs e)
         {
-            int id = 0;
-            if (productGridView.SelectedRows.Count > 0)
+            try
             {
-                id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
+                int id = 0;
+                if (productGridView.SelectedRows.Count > 0)
+                {
+                    id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
+                }
+                Product productToDelete = Inventory.lookupProduct(id);
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete product {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Inventory.removeProduct(productToDelete.ProductID);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
             }
-            Product productToDelete = Inventory.lookupProduct(id);
-            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete product {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            catch (Exception exc)
             {
-                Inventory.removeProduct(productToDelete.ProductID);
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                return;
+                MessageBox.Show(exc.Message);
             }
         }
     }

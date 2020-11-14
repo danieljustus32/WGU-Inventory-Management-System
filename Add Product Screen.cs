@@ -80,7 +80,7 @@ namespace C968_PA_Task
                     }
                 }
                 return found;
-            }
+            } 
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -220,121 +220,177 @@ namespace C968_PA_Task
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            try
             {
-                bool formFilled = true;
-                foreach (Control control in this.Controls)
                 {
-                    if (control.GetType() == typeof(TextBox) && control.Text == String.Empty && control.Name != "searchBox")
+                    bool formFilled = true;
+                    foreach (Control control in this.Controls)
                     {
-                        formFilled = false;
-                    }
-                }
-                if (formFilled == true)
-                {
-                    // Check that min is less than or equal to max
-                    if (int.Parse(textBoxMin.Text) > int.Parse(textBoxMax.Text))
-                    {
-                        MessageBox.Show("Minimum inventory on hand must be less than or equal to maximum inventory on hand");
-                        return;
-                    }
-
-                    // Check that inventory falls between min and max values
-                    if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
-                    {
-                        MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than or equal to maximum on-hand value");
-                        return;
-                    }
-
-
-                    Product productToAddOrModify = new Product(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
-                                                    int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
-                                                    int.Parse(textBoxMax.Text));
-                    if (loadedProduct != null)
-                    {
-                        foreach (var part in partsToBeAssociated)
+                        // Check that no fields have been left blank
+                        if (control.GetType() == typeof(TextBox) && control.Text == String.Empty && control.Name != "textBoxSearch")
                         {
-                            if (!loadedProduct.associatedParts.Contains(part))
-                            {
-                                loadedProduct.addAssociatedPart(part);
-                            }
+                            formFilled = false;
                         }
-                        // Check to make sure the product we're about to save has at least one associated part. If not, 
-                        // alert the user and do nothing.
-                        if (loadedProduct.associatedParts.Count == 0)
+                    }
+                    if (formFilled == true)
+                    {
+                        // Check that min is less than or equal to max
+                        if (int.Parse(textBoxMin.Text) > int.Parse(textBoxMax.Text))
                         {
-                            MessageBox.Show("All products must have at least one associated part");
+                            MessageBox.Show("Minimum inventory on hand must be less than or equal to maximum inventory on hand");
                             return;
                         }
-                        // Save
-                        Inventory.updateProduct(productToAddOrModify.ProductID, productToAddOrModify);
+
+                        // Check that inventory falls between min and max values
+                        if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
+                        {
+                            MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than or equal to maximum on-hand value");
+                            return;
+                        }
+
+
+                        Product productToAddOrModify = new Product(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                                                        int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
+                                                        int.Parse(textBoxMax.Text));
+                        if (loadedProduct != null)
+                        {
+                            foreach (var part in partsToBeAssociated)
+                            {
+                                if (!loadedProduct.associatedParts.Contains(part))
+                                {
+                                    loadedProduct.addAssociatedPart(part);
+                                }
+                            }
+                            // Check to make sure the product we're about to save has at least one associated part. If not, 
+                            // alert the user and do nothing.
+                            if (loadedProduct.associatedParts.Count == 0)
+                            {
+                                MessageBox.Show("All products must have at least one associated part");
+                                return;
+                            }
+                            // Save
+                            Inventory.updateProduct(productToAddOrModify.ProductID, productToAddOrModify);
+                            foreach (var part in partsToBeAssociated)
+                            {
+                                productToAddOrModify.addAssociatedPart(part);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var part in partsToBeAssociated)
+                            {
+                                productToAddOrModify.addAssociatedPart(part);
+                            }
+                            // Check to make sure the product we're about to save has at least one associated part. If not, 
+                            // alert the user and do nothing.
+                            if (productToAddOrModify.associatedParts.Count == 0)
+                            {
+                                MessageBox.Show("All products must have at least one associated part");
+                                return;
+                            }
+                            // Save
+                            Inventory.addProduct(productToAddOrModify);
+                        }
+
+                        // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
+                        this.Hide();
+                        foreach (Control control in this.Controls)
+                        {
+                            if (control.GetType() == typeof(TextBox))
+                            {
+                                control.Text = null;
+                            }
+                        }
+                        Program.mainScreen.Show();
                     }
                     else
                     {
-                        foreach (var part in partsToBeAssociated)
-                        {
-                            productToAddOrModify.addAssociatedPart(part);
-                        }
-                        // Check to make sure the product we're about to save has at least one associated part. If not, 
-                        // alert the user and do nothing.
-                        if (loadedProduct.associatedParts.Count == 0)
-                        {
-                            MessageBox.Show("All products must have at least one associated part");
-                            return;
-                        }
-                        // Save
-                        Inventory.addProduct(productToAddOrModify);
+                        // Set formFilled back to true for subsequent validations
+                        formFilled = true;
+                        MessageBox.Show($"Please fill out all fields before saving this part");
                     }
-
-                    // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
-                    this.Hide();
-                    foreach (Control control in this.Controls)
-                    {
-                        if (control.GetType() == typeof(TextBox))
-                        {
-                            control.Text = null;
-                        }
-                    }
-                    Program.mainScreen.Show();
                 }
-                else
-                {
-                    // Set formFilled back to true for subsequent validations
-                    formFilled = true;
-                    MessageBox.Show($"Please fill out all fields before saving this part");
-                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
             }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
-            Part partToAdd = Inventory.lookupPart(id);
-            partsToBeAssociated.Add(partToAdd);
+            try
+            {
+                int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                Part partToAdd = Inventory.lookupPart(id);
+                partsToBeAssociated.Add(partToAdd);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(associatedPartsGridView.SelectedRows[0].Cells[0].Value.ToString());
-            if (loadedProduct != null)
+            try
             {
-                loadedProduct.removeAssociatedPart(id);
-                for (int i = 0; i < partsToBeAssociated.Count; i++)
+                int id = int.Parse(associatedPartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                // Check if we have a product loaded that we're modifying. If so, we need to actually 
+                // remove the part from its associatedParts list and then remove it from partsToBeAssociated
+                if (loadedProduct != null)
                 {
-                    if (partsToBeAssociated[i].PartID == id)
+                    loadedProduct.removeAssociatedPart(id);
+                    for (int i = 0; i < partsToBeAssociated.Count; i++)
                     {
-                        partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                        if (partsToBeAssociated[i].PartID == id)
+                        {
+                            partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < partsToBeAssociated.Count; i++)
+                    {
+                        if (partsToBeAssociated[i].PartID == id)
+                        {
+                            partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                        }
                     }
                 }
             }
-            else
+            catch (Exception exc)
             {
-                for (int i = 0; i < partsToBeAssociated.Count; i++)
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchValue = textBoxSearch.Text;
+
+                foreach (DataGridViewRow row in candidatePartsGridView.Rows)
                 {
-                    if (partsToBeAssociated[i].PartID == id)
+                    if (Regex.Match(row.Cells[0].Value.ToString(), $"{searchValue}").Success)
                     {
-                        partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                        row.Selected = true;
+                        candidatePartsGridView.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                    if (Regex.Match(row.Cells[1].Value.ToString().ToLower(), $"{searchValue.ToLower()}").Success)
+                    {
+                        row.Selected = true;
+                        candidatePartsGridView.CurrentCell = row.Cells[0];
+                        break;
                     }
                 }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
             }
         }
     }

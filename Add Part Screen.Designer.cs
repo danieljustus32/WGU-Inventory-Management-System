@@ -106,14 +106,14 @@
             // 
             // textBoxMin
             // 
-            this.textBoxMin.Location = new System.Drawing.Point(210, 293);
+            this.textBoxMin.Location = new System.Drawing.Point(430, 301);
             this.textBoxMin.Name = "textBoxMin";
             this.textBoxMin.Size = new System.Drawing.Size(69, 23);
             this.textBoxMin.TabIndex = 7;
             // 
             // textBoxMax
             // 
-            this.textBoxMax.Location = new System.Drawing.Point(330, 293);
+            this.textBoxMax.Location = new System.Drawing.Point(240, 301);
             this.textBoxMax.Name = "textBoxMax";
             this.textBoxMax.Size = new System.Drawing.Size(70, 23);
             this.textBoxMax.TabIndex = 8;
@@ -157,7 +157,7 @@
             // labelMin
             // 
             this.labelMin.AutoSize = true;
-            this.labelMin.Location = new System.Drawing.Point(167, 301);
+            this.labelMin.Location = new System.Drawing.Point(359, 304);
             this.labelMin.Name = "labelMin";
             this.labelMin.Size = new System.Drawing.Size(28, 15);
             this.labelMin.TabIndex = 7;
@@ -166,7 +166,7 @@
             // labelMax
             // 
             this.labelMax.AutoSize = true;
-            this.labelMax.Location = new System.Drawing.Point(294, 301);
+            this.labelMax.Location = new System.Drawing.Point(167, 304);
             this.labelMax.Name = "labelMax";
             this.labelMax.Size = new System.Drawing.Size(30, 15);
             this.labelMax.TabIndex = 8;

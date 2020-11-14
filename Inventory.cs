@@ -37,6 +37,7 @@ namespace C968_PA_Task
 
         public static Product lookupProduct(int ProductID)
         {
+            // Return null if not found so we can check if parts exist when calling from other classes
             Product foundProduct = null;
             for (int i = 0; i < products.Count; i++)
             {
@@ -84,6 +85,7 @@ namespace C968_PA_Task
 
         public static Part lookupPart(int PartID)
         {
+            // Return null if not found so we can check if parts exist when calling from other classes
             Part foundPart = null;
             foreach (var part in allParts)
             {
