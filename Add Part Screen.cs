@@ -284,86 +284,93 @@ namespace C968_PA_Task
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            bool formFilled = true;
-            foreach (Control control in this.Controls)
+            try
             {
-                if (control.GetType() == typeof(TextBox) && control.Text  == String.Empty)
+                bool formFilled = true;
+                foreach (Control control in this.Controls)
                 {
-                    formFilled = false;
-                }
-            }
-            if (formFilled == true)
-            {
-                // Check that min is less than or equal to max
-                if (int.Parse(textBoxMin.Text) > int.Parse(textBoxMax.Text))
-                {
-                    MessageBox.Show("Minimum inventory on hand must be less than or equal to maximum inventory on hand");
-                    return;
-                }
-
-                // Check that inventory falls between min and max values
-                if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
-                {
-                    MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than or equal to maximum on-hand value");
-                    return;
-                }
-
-                if (radioButtonInhouse.Checked == true)
-                {
-                    Inhouse partToAddOrModify = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
-                                                    int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
-                                                    int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
-                    if (loadedPart != null)
+                    if (control.GetType() == typeof(TextBox) && control.Text == String.Empty)
                     {
-                        Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
+                        formFilled = false;
+                    }
+                }
+                if (formFilled == true)
+                {
+                    // Check that min is less than or equal to max
+                    if (int.Parse(textBoxMin.Text) > int.Parse(textBoxMax.Text))
+                    {
+                        MessageBox.Show("Minimum inventory on hand must be less than or equal to maximum inventory on hand");
+                        return;
+                    }
+
+                    // Check that inventory falls between min and max values
+                    if (int.Parse(textBoxInventory.Text) < int.Parse(textBoxMin.Text) || int.Parse(textBoxInventory.Text) > int.Parse(textBoxMax.Text))
+                    {
+                        MessageBox.Show("Please ensure inventory on hand is at least equal to minimum on-hand value and less than or equal to maximum on-hand value");
+                        return;
+                    }
+
+                    if (radioButtonInhouse.Checked == true)
+                    {
+                        Inhouse partToAddOrModify = new Inhouse(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                                                        int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
+                                                        int.Parse(textBoxMax.Text), int.Parse(textBoxMachineID.Text));
+                        if (loadedPart != null)
+                        {
+                            Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
+                        }
+                        else
+                        {
+                            Inventory.addPart(partToAddOrModify);
+                        }
+
+                        // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
+                        this.Hide();
+                        foreach (Control control in this.Controls)
+                        {
+                            if (control.GetType() == typeof(TextBox))
+                            {
+                                control.Text = null;
+                            }
+                        }
+                        Program.mainScreen.Show();
                     }
                     else
                     {
-                        Inventory.addPart(partToAddOrModify);
-                    }
-
-                    // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
-                    this.Hide();
-                    foreach (Control control in this.Controls)
-                    {
-                        if (control.GetType() == typeof(TextBox))
+                        Outsourced partToAddOrModify = new Outsourced(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
+                                                        int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
+                                                        int.Parse(textBoxMax.Text), textBoxMachineID.Text);
+                        if (loadedPart != null)
                         {
-                            control.Text = null;
+                            Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
                         }
+                        else
+                        {
+                            Inventory.addPart(partToAddOrModify);
+                        }
+
+                        // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
+                        this.Hide();
+                        foreach (Control control in this.Controls)
+                        {
+                            if (control.GetType() == typeof(TextBox))
+                            {
+                                control.Text = null;
+                            }
+                        }
+                        Program.mainScreen.Show();
                     }
-                    Program.mainScreen.Show();
                 }
                 else
                 {
-                    Outsourced partToAddOrModify = new Outsourced(int.Parse(textBoxID.Text), textBoxName.Text, decimal.Parse(textBoxPrice.Text),
-                                                    int.Parse(textBoxInventory.Text), int.Parse(textBoxMin.Text),
-                                                    int.Parse(textBoxMax.Text), textBoxMachineID.Text);
-                    if (loadedPart != null)
-                    {
-                        Inventory.updatePart(partToAddOrModify.PartID, partToAddOrModify);
-                    }
-                    else
-                    {
-                        Inventory.addPart(partToAddOrModify);
-                    }
-
-                    // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
-                    this.Hide();
-                    foreach (Control control in this.Controls)
-                    {
-                        if (control.GetType() == typeof(TextBox))
-                        {
-                            control.Text = null;
-                        }
-                    }
-                    Program.mainScreen.Show();
+                    // Set formFilled back to true for subsequent validations
+                    formFilled = true;
+                    MessageBox.Show($"Please fill out all fields before saving this part");
                 }
-            } 
-            else
+            }
+            catch (Exception exc)
             {
-                // Set formFilled back to true for subsequent validations
-                formFilled = true;
-                MessageBox.Show($"Please fill out all fields before saving this part");
+                MessageBox.Show(exc.Message);
             }
         }
 
