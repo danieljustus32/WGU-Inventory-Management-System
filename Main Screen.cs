@@ -162,6 +162,11 @@ namespace C968_PA_Task
                     id = int.Parse(productGridView.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 Product productToDelete = Inventory.lookupProduct(id);
+                if (productToDelete.associatedParts.Count > 0)
+                {
+                    MessageBox.Show("Can't delete a product that has parts associated with it, please remove these parts and try again");
+                    return;
+                }
                 DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete product {id}?", "Confirm Deletion", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {

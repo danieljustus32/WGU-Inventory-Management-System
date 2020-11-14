@@ -261,13 +261,6 @@ namespace C968_PA_Task
                                     loadedProduct.addAssociatedPart(part);
                                 }
                             }
-                            // Check to make sure the product we're about to save has at least one associated part. If not, 
-                            // alert the user and do nothing.
-                            if (loadedProduct.associatedParts.Count == 0)
-                            {
-                                MessageBox.Show("All products must have at least one associated part");
-                                return;
-                            }
                             // Save
                             Inventory.updateProduct(productToAddOrModify.ProductID, productToAddOrModify);
                             foreach (var part in partsToBeAssociated)
@@ -280,13 +273,6 @@ namespace C968_PA_Task
                             foreach (var part in partsToBeAssociated)
                             {
                                 productToAddOrModify.addAssociatedPart(part);
-                            }
-                            // Check to make sure the product we're about to save has at least one associated part. If not, 
-                            // alert the user and do nothing.
-                            if (productToAddOrModify.associatedParts.Count == 0)
-                            {
-                                MessageBox.Show("All products must have at least one associated part");
-                                return;
                             }
                             // Save
                             Inventory.addProduct(productToAddOrModify);
