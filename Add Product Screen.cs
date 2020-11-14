@@ -278,7 +278,7 @@ namespace C968_PA_Task
                             Inventory.addProduct(productToAddOrModify);
                         }
 
-                        // Hide our Add Part screen. However, since we're not instantiating a new one every time we click 'Add Part', we need to clear the form here
+                        // Hide our Add Product screen. However, since we're not instantiating a new one every time we click 'Save', we need to clear the form here
                         this.Hide();
                         foreach (Control control in this.Controls)
                         {
@@ -307,9 +307,16 @@ namespace C968_PA_Task
         {
             try
             {
-                int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
-                Part partToAdd = Inventory.lookupPart(id);
-                partsToBeAssociated.Add(partToAdd);
+                if (Inventory.allParts.Count > 0)
+                {
+                    int id = int.Parse(candidatePartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                    Part partToAdd = Inventory.lookupPart(id);
+                    partsToBeAssociated.Add(partToAdd);
+                }
+                else
+                {
+                    return;
+                }
             }
             catch (Exception exc)
             {
@@ -321,29 +328,36 @@ namespace C968_PA_Task
         {
             try
             {
-                int id = int.Parse(associatedPartsGridView.SelectedRows[0].Cells[0].Value.ToString());
-                // Check if we have a product loaded that we're modifying. If so, we need to actually 
-                // remove the part from its associatedParts list and then remove it from partsToBeAssociated
-                if (loadedProduct != null)
+                if (partsToBeAssociated.Count > 0)
                 {
-                    loadedProduct.removeAssociatedPart(id);
-                    for (int i = 0; i < partsToBeAssociated.Count; i++)
+                    int id = int.Parse(associatedPartsGridView.SelectedRows[0].Cells[0].Value.ToString());
+                    // Check if we have a product loaded that we're modifying. If so, we need to actually 
+                    // remove the part from its associatedParts list and then remove it from partsToBeAssociated
+                    if (loadedProduct != null)
                     {
-                        if (partsToBeAssociated[i].PartID == id)
+                        loadedProduct.removeAssociatedPart(id);
+                        for (int i = 0; i < partsToBeAssociated.Count; i++)
                         {
-                            partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                            if (partsToBeAssociated[i].PartID == id)
+                            {
+                                partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < partsToBeAssociated.Count; i++)
+                        {
+                            if (partsToBeAssociated[i].PartID == id)
+                            {
+                                partsToBeAssociated.Remove(partsToBeAssociated[i]);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < partsToBeAssociated.Count; i++)
-                    {
-                        if (partsToBeAssociated[i].PartID == id)
-                        {
-                            partsToBeAssociated.Remove(partsToBeAssociated[i]);
-                        }
-                    }
+                    return;
                 }
             }
             catch (Exception exc)
