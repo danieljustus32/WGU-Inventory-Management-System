@@ -1,4 +1,4 @@
-# WGU-Inventory-Management-System
+# WGU Inventory Management System
 An inventory management system Windows Forms app written in C#
 
 This project was written as part of a final assessment in Software I for my B.S IT -- Software Development degree at WGU. Thanks for looking!
